@@ -14,7 +14,7 @@
             <!-- </template> -->
             <!-- 2. 로그인 했을때 유저네임   -->
             <!-- <template v-else> -->
-            <li><a><router-link to="/mypage/:id">{{ $store.state.name }}님</router-link></a></li>
+            <li><a><router-link to="/mypage1/:id">{{ $store.state.name }}님</router-link></a></li>
             <li><a href="javascript:;" @click="logoutUser">Logout</a></li>
             <!-- </template> -->
             <!-- <li><a><router-link to="/login"><span id="bell"><i class="fa-regular fa-bell"></i></span></router-link></a></li> -->
