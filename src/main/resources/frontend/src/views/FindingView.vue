@@ -1,5 +1,4 @@
 <template>
-
 <div>
     <h2 class="title">지점찾기</h2>   
     <hr class="line">
