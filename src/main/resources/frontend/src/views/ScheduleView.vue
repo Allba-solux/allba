@@ -1,6 +1,6 @@
 <template>
     <div>
-    <template v-if="isUserLogin" >
+    <!-- <template v-if="isUserLogin" > -->
     <ScheduleList></ScheduleList>
     <hr class="underline">
     <div class='demo-app'>
@@ -45,15 +45,15 @@
       </FullCalendar>
     </div>
   </div>
-  </template>  
+  <!-- </template>   -->
 
-  <template v-else>
+  <!-- <template v-else> -->
      <div class="container">
       <p class="text">아직 등록된 지점이 없습니다.</p> 
       <router-link to="/login"><button type="button" class="btn btn-danger">로그인 하러가기</button></router-link>
       <router-link to="/finding"><button type="button" class="btn btn-warning">우리 지점 찾으러가기</button></router-link>
       </div>    
-  </template>
+  <!-- </template> -->
         
     </div>
 </template>

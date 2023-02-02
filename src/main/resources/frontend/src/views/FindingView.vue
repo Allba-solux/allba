@@ -1,5 +1,4 @@
 <template>
-
 <div>
     <h2 class="title">지점찾기</h2>   
     <hr class="line">
@@ -76,9 +75,22 @@
 
 </template>
 <script>
-export default {
+// import { fetchPosts } from '@/api/index';
 
-}
+// export default {
+//     data(){
+//         registerItems:[],
+//     }
+// methods:{
+//    async fetchData(){
+//         const { data } = await fetchPosts();
+//         this.postItems = data.posts;
+//    },
+//  },
+//  created(){
+//     this.fetchData();
+//  },
+// };
 </script>
 <style scoped >
 .title {
