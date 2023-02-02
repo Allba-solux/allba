@@ -18,7 +18,7 @@ export default new VueRouter({
   routes: [
     {
     path: '/',
-    redirect: '/findng',
+    redirect: '/main',
     },
     {
     path : '/main',

@@ -9,14 +9,14 @@
             <li><a><router-link to="/finding">지점찾기</router-link></a></li>
             <li><a><router-link to="/schedule">스케쥴링</router-link></a></li>
             <!-- 1. 로그인x -->
-            <template v-if="isUserLogin">
+            <!-- <template v-if="isUserLogin"> -->
             <li><a><router-link to="/login">로그인</router-link></a></li>
-            </template>
+            <!-- </template> -->
             <!-- 2. 로그인 했을때 유저네임   -->
-            <template v-else>
-            <li><a><router-link to="/mypage">{{ $store.state.name }}님</router-link></a></li>
+            <!-- <template v-else> -->
+            <li><a><router-link to="/mypage/:id">{{ $store.state.name }}님</router-link></a></li>
             <li><a href="javascript:;" @click="logoutUser">Logout</a></li>
-            </template>
+            <!-- </template> -->
             <!-- <li><a><router-link to="/login"><span id="bell"><i class="fa-regular fa-bell"></i></span></router-link></a></li> -->
             
         </ul>
