@@ -12,4 +12,12 @@ function loginUser(userData) {
   return instance.post("login", userData);
 }
 
-export { registerUser, loginUser };
+function fetchPosts() {
+  return instance.get('posts');
+}
+
+function createPost(postData) {
+  return instance.post('posts', postData);
+}
+
+export { registerUser, loginUser, fetchPosts, createPost };
