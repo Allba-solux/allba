@@ -7,9 +7,9 @@
   <i class="fa-solid fa-user"></i><span class="user">{{$route.params.id}}님</span>
             </div>
                 <div>
-                    <router-link to="/register">
-                        <button type="button" class="btn btn-outline-secondary" id="registerbtn"
-                            style="margin-bottom:6.75rem ;margin-right:25%;float:right; background: #F4ECFF">
+                    <router-link to="/mypage2/:id">
+                        <button type="button" class="btn" id="registerbtn"
+                            style="margin-bottom: 3rem; margin-right:25%; float:right;  background-color: #D5D4DF;">
                             급여 확인하기
                         </button>
                     </router-link>
@@ -73,87 +73,6 @@
                     </tbody>
                 </table>
 
-        <h2 class="title">나의 급여</h2>
-        <hr class="line">
-        
-        <table class="table caption-top">
-            <caption> </caption>
-            <thead>
-                <tr>
-                    <th scope="col">월</th>
-                    <th scope="col">총액</th>
-                    <th scope="col">급여내역</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1월</td>
-                    <td> 137,400원 </td>
-                    <td>
-                        <router-link to="/register">
-                            <button type="button" class="btn btn-outline-secondary" id="registerbtn"
-                                style="margin-bottom:6.75rem ;margin-right:25%;float:right; background: #F4ECFF">
-                                급여 확인하기
-                            </button>
-                        </router-link>
-                    </td>
-        </tr>
-            </tbody>
-        </table>
-               
-        
-            <table class="table caption-top">
-                <caption> 나의 급여 내역</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">기간</th>
-                        <th scope="col">총액</th>
-                        <th scope="col">변동사항</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>first week</td>
-                        <td> 54,960 </td>
-                        <td> + 27,480 </td>
-                    </tr>
-        
-                </tbody>
-        
-                <tbody>
-                    <tr>
-                        <td>second week</td>
-                        <td> 27,480 </td>
-                        <td> </td>
-                    </tr>
-                </tbody>
-        
-                <tbody>
-                    <tr>
-                        <td>third week</td>
-                        <td> 27,480 </td>
-                        <td> </td>
-                    </tr>
-        
-                </tbody>
-        
-                <tbody>
-                    <tr>
-                        <td>fourth week</td>
-                        <td> 27,480 </td>
-                        <td> </td>
-                    </tr>
-                </tbody>
-        
-                <tbody>
-                    <tr>
-                        <td>fifth week</td>
-                        <td> 27,480 </td>
-                        <td> </td>
-                    </tr>
-
-                </tbody>
-            </table>
     </div>
 </template>
 <script>
@@ -169,6 +88,11 @@
     
         .user {
             font-weight: 500;
+            font-size: 24px;
+        }
+        .fa-solid {
+            margin-left: 8%;
+            font-size: 24px;
         }
     
         .line {
@@ -181,7 +105,20 @@
         }
     
         table caption {
+            margin-top: 3%;
             padding: 10px;
-            background: #F00;
+            background-color: rgba(255, 253, 242, 0.968);
+        }
+        .table{
+            margin-left: 8%;
+            width: 90%;
+        }
+        #registerbtn{
+            margin-left: 2%;
+            position: absolute;
+            width: 200px;
+            height: 50spx;
+            left: 900px;
+            top: 240px;
         }
 </style>

@@ -8,8 +8,11 @@ import CalendarView from '../views/CalendarView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import NoScheduleView from '../views/NoScheduleView.vue';
 import SignupView from '../views/SignupView.vue';
-import MypageView from '../views/MypageView.vue';
 import RoomView from '../views/RoomView.vue';
+import Mypage1View from '../views/Mypage1View.vue';
+import Mypage2View from '../views/Mypage2View.vue';
+import Mypage3View from '../views/Mypage3View.vue';
+
 
 Vue.use(VueRouter);
 
@@ -53,14 +56,20 @@ export default new VueRouter({
       component:SignupView
     },
     {
-      path:'/mypage/:id',
-      component:MypageView
-    },
-    {
       path: '/room',
       component:RoomView
     },
-
-
+    {
+      path: '/mypage1/:id',
+      component: Mypage1View
+    },
+    {
+      path: '/mypage2/:id',
+      component: Mypage2View
+    },
+    {
+      path: '/mypage3/:id',
+      component: Mypage3View
+    },
   ]
 })
