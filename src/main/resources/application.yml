@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-       uri: mongodb+srv://allba:1111@cluster0.ktr3yfc.mongodb.net/?retryWrites=true&w=majority
+       uri: mongodb+srv://freshman:1234@cluster0.dw1q2ck.mongodb.net/?retryWrites=true&w=majority
        database: allba
 debug: true
 logging:
