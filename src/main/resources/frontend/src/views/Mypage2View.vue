@@ -7,7 +7,6 @@
 
   <i class="fa-solid fa-user"></i><span class="user">{{$route.params.id}}님</span>
             </div>
-        
         <table class="table caption-top">
             <caption> 이 달의 급여</caption>
             <thead>
