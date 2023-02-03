@@ -37,7 +37,6 @@
     </router-link>
 
     <hr class="line" />
-
     <div class="p-5 10" style="width: 88%; margin-left: 6%">
       <div class="row g-5">
         <div v-for="user in users" class="col-3">
