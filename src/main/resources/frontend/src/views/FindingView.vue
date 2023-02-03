@@ -40,18 +40,21 @@
 
     <div class="p-5 10" style="width: 88%; margin-left: 6%">
       <div class="row g-5">
-        <div class="row">
-          <div class="col-sm-4 col-lg-3">
-              <div class="card">
-                <div class="card-body" v-for="user in users">
-                  <h5 class="card-title">{{ user.companyName }}</h5>
-                  <p class="card-text">{{ user.companyDescription }}</p>
-                  <a href="#" class="btn btn-light">참가요청</a>
-                </div>
+        <div v-for="user in users" class="col-3">
+          <div class="row">
+            <!-- <div class="col-sm-4 col-lg-3"> -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ user.companyName }}</h5>
+                <p class="card-text">{{ user.companyDescription }}</p>
+                <a href="#" class="btn btn-light">참가요청</a>
+                <!-- </div> -->
               </div>
-        
+            </div>
+          </div>
+        </div>
 
-            <!-- <RegisterItem
+        <!-- <RegisterItem
               v-for="postItem in postItems"
               :key="postItem._id"
               :name="postItem.name"
@@ -59,7 +62,7 @@
               >{{ postItem.name }}</RegisterItem
             > -->
 
-            <!-- 
+        <!-- 
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title" style="">눈송행복점</h5>
@@ -102,8 +105,6 @@
                                         </div>
                                     </div>
                                 </div> -->
-          </div>
-        </div>
       </div>
     </div>
   </div>
