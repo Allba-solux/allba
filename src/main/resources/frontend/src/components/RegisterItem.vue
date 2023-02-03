@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <div>
     <div class="card">
     <div class="card-body">
@@ -10,16 +10,18 @@
     </div>
 </template>
 <script>
-defineProps({
-	name: {
-		type: String,
-	},
-	description: {
-		type: String,
-	},
-});
+export default {
+    props: {
+        name: {
+            type: String,
+        },
+        description: {
+            type: String,
+        },
+    },
+}
 </script>
 
-<style lang="">
+<style>
     
 </style>
