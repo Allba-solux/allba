@@ -1,6 +1,6 @@
-package allba.alllbaback.repository;
+package freshman.allbaback.repository;
 
-import allba.alllbaback.domain.Company;
+import freshman.allbaback.domain.Company;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

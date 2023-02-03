@@ -1,9 +1,15 @@
-server:
-  port: 80
-
 spring:
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: all-ba
+       uri: mongodb+srv://allba:1111@cluster0.ktr3yfc.mongodb.net/?retryWrites=true&w=majority
+       database: allba
+debug: true
+logging:
+  level:
+    org:
+      springframework:
+        context: DEBUG
+        boot:
+          autoconfigure: ERROR
+server:
+  port: 9090

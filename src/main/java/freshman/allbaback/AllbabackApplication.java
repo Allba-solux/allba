@@ -1,13 +1,12 @@
-package allba.alllbaback;
+package freshman.allbaback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AlllbaBackApplication {
-
+public class AllbabackApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(AlllbaBackApplication.class, args);
+		SpringApplication.run(AllbabackApplication.class, args);
 	}
 
 }
