@@ -15,22 +15,39 @@ import java.util.List;
 public class SchedulerController {
 
     private final SchedulerService schedulerService;
-    // 스케줄 생성
-    @PostMapping("/new")
-    public String createNewSchedule(@RequestBody Scheduler scheduler) {
-        schedulerService.addScheduler(scheduler);
+
+    @PostMapping("/{companyCode}/new")
+    public String createNewSchedule(@PathVariable String companyCode, @RequestBody Scheduler scheduler) {
+        scheduler.setCompanyCode(companyCode);
+        schedulerService.addSchedule(scheduler);
         return "newSchedule";
     }
 
-    // 지점 스케줄러 조회
-    @GetMapping("")
-    public List<Scheduler> viewAll() {
-
-
-        // DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.KOREA);
-        return schedulerService.findSchedulers();
-
+    @GetMapping("{companyCode}")
+    public List<Scheduler> viewAll(@PathVariable String companyCode) {
+        return schedulerService.findSchedulers(companyCode);
     }
 
+//    @DeleteMapping("/{companyCode}/{scheduler_id}/delete")
+//    public void deleteSchedule(@PathVariable String companyCode, @PathVariable String scheduler_id) {
+//        schedulerService.deleteSchedule(scheduler_id);
+//    }
+
+    @GetMapping("{companyCode}/data")
+    public List<Scheduler> viewData(@PathVariable String companyCode) {
+        return schedulerService.findDatas(companyCode);
+    }
+
+    @PostMapping("/{companyCode}/help")
+    public void allbaPlease(@PathVariable String companyCode, @RequestBody Scheduler scheduler) {
+        scheduler.setCompanyCode(companyCode);
+        scheduler.setHelp(Boolean.TRUE);
+        schedulerService.addSchedule(scheduler);
+    }
+
+//    @PutMapping("/{companyCode}/{scheduler_id}/DATAaccept")
+//    public void allbaOK(@PathVariable String companyCode, @PathVariable String scheduler_id) {
+//        //schedulerService.allbaOK(id);
+//    }
 
 }

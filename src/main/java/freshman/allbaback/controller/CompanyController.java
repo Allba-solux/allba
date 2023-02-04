@@ -21,23 +21,23 @@ public class CompanyController {
     }
 
     @DeleteMapping("/{companyCode}/delete")
-    public void delete(@PathVariable String companyCode) {
-        companyService.delete(companyCode);
+    public void deleteCompany(@PathVariable String companyCode) {
+        companyService.deleteCompany(companyCode);
     }
 
     @GetMapping("")
-    public List<Company> finding() {
-        return companyService.findCompanies();
+    public List<Company> viewAllCompany() {
+        return companyService.findAllCompanies();
     }
 
     @GetMapping("/{companyName}/find")
-    public List<Company> findingOne(@PathVariable String companyName) {
-        return companyService.findOne(companyName);
+    public List<Company> searchByCompanyName(@PathVariable String companyName) {
+        return companyService.findByCompanyName(companyName);
     }
 
-    @PutMapping("/{companyName}/{pid}/join")
-    public void joinCompany(@PathVariable String companyName, @PathVariable String pid) {
-
-    }
+//    @PutMapping("/{companyName}/{pid}/join")
+//    public void joinCompany(@PathVariable String companyName, @PathVariable String pid) {
+//
+//    }
 
 }
