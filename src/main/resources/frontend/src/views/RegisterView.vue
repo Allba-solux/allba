@@ -49,7 +49,9 @@ export default {
                 companyDescription: this.companyDescription,
             })
             .then(res => {
-            console.log(res);
+                console.log(res);
+                this.$router.push('/finding');
+        
             }).catch(err => {
                     console.log(err);
             })

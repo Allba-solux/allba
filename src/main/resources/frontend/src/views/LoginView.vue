@@ -65,6 +65,11 @@ export default {
 </script>
 
 <style scoped>
+@import url("//fonts.googleapis.com/earlyaccess/nanumgothic.css");
+input[type="password"] {
+  font-family: "Nanum Gothic", sans-serif !important;
+}
+
 .main {
   width: 100%;
   display: flex;
