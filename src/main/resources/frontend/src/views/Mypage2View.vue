@@ -13,21 +13,13 @@
                 <tr>
                     <th scope="col">월</th>
                     <th scope="col">총액</th>
-                    <th scope="col">급여내역</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1월</td>
                     <td> 137,400원 </td>
-                    <td>
-                        <router-link to="/mypage3/:id">
-                            <button type="button" class="btn" id="registerbtn"
-                                style="margin-bottom:6.75rem ;margin-right:25%;float:right; background: #D5D4DF">
-                                급여 확인하기
-                            </button>
-                        </router-link>
-                    </td>
+                    
         </tr>
             </tbody>
         </table>
