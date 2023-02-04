@@ -7,6 +7,7 @@
       <i class="fa-solid fa-user"></i
       ><span class="user">{{ $route.params.id }}님</span>
     </div>
+
     <div>
       <router-link to="/mypage2/:id">
         <button
@@ -21,6 +22,24 @@
           "
         >
           급여 확인하기
+        </button>
+      </router-link>
+    </div>
+
+    <div>
+      <router-link to="/inputwage/:id">
+        <button
+          type="button"
+          class="btn"
+          id="editbtn"
+          style="
+            margin-bottom: 3rem;
+            margin-right: 25%;
+            float: right;
+            background-color: white;
+          "
+        >
+          시급 입력하기
         </button>
       </router-link>
     </div>
@@ -40,7 +59,7 @@
         <tr>
           <td>메가커피 눈송점</td>
           <td>20:00 ~ 23:00</td>
-          <td>9,160 / h</td>
+          <td>9,160 /</td>
         </tr>
       </tbody>
     </table>
@@ -170,5 +189,15 @@ table caption {
   height: 50spx;
   left: 900px;
   top: 240px;
+}
+#editbtn {
+  margin-left: 2%;
+  position: absolute;
+  width: 130px;
+  height: 30spx;
+  left: 1060px;
+  top: 382px;
+  background-color: white;
+  border-color: black;
 }
 </style>

@@ -9,13 +9,13 @@
         <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" v-model="name">
         <label for="floatingInput">지점 이름</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating mb-3">
         <input type="text" class="form-control" id="floatingPassword" placeholder="Password" v-model="pwd">
         <label for="floatingPassword">비밀번호 설정</label>
     </div>
 
             <div class="form-floating">
-                <textarea class="form-control mt-3" placeholder="Leave a comment here" id="floatingTextarea2"
+                <textarea class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea2"
                     style="height: 100px" v-model="contents"></textarea>
                 <label for="floatingTextarea2">지점 소개</label>
             </div>
@@ -41,11 +41,12 @@ export default {
             contents: '',
         };
     },
-    methodes:{
+    methods:{
             async submitForm(){
             const response = await createPost({
                 name: this.name,
                 pwd: this.pwd,
+                wage: this.wage,
                 contents:this.contents,
             });
             console.log(response);
