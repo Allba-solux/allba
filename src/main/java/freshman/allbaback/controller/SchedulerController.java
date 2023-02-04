@@ -16,19 +16,20 @@ public class SchedulerController {
 
     private final SchedulerService schedulerService;
     // 스케줄 생성
-    @PostMapping("/new")
-    public String createNewSchedule(@RequestBody Scheduler scheduler) {
+    @PostMapping("/{companyCode}/new")
+    public String createNewSchedule(@PathVariable String companyCode, @RequestBody Scheduler scheduler) {
+        scheduler.setCompanyCode(companyCode);
         schedulerService.addScheduler(scheduler);
         return "newSchedule";
     }
 
     // 지점 스케줄러 조회
-    @GetMapping("")
-    public List<Scheduler> viewAll() {
+    @GetMapping("{companyCode}")
+    public List<Scheduler> viewAll(@PathVariable String companyCode) {
 
 
         // DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.KOREA);
-        return schedulerService.findSchedulers();
+        return schedulerService.findSchedulers(companyCode);
 
     }
 

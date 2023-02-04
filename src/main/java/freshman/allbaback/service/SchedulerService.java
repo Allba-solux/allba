@@ -20,8 +20,8 @@ public class SchedulerService {
     }
 
     // 스케줄 조회
-    public List<Scheduler> findSchedulers() {
-        return schedulerRepository.findAll();
+    public List<Scheduler> findSchedulers(String companyCode) {
+        return schedulerRepository.findByCompanyCode(companyCode);
     }
     //
 }
