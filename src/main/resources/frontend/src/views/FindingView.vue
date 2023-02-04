@@ -19,6 +19,7 @@
         class="btn btn-outline-secondary"
         type="button"
         id="button-addon2"
+        @click="getData"
       >
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
@@ -124,7 +125,7 @@ export default {
   data() {
     return {
       users: [],
-      companyName: '',
+      companyName: "",
     };
   },
   methods: {
