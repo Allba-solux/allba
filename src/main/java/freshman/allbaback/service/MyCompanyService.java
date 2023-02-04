@@ -1,10 +1,7 @@
 package freshman.allbaback.service;
 
 import freshman.allbaback.domain.MyCompany;
-import freshman.allbaback.domain.members.Members;
-import freshman.allbaback.repository.MembersRepository;
 import freshman.allbaback.repository.MyCompanyRepository;
-import freshman.allbaback.web.dto.MembersSaveRequestDto;
 import freshman.allbaback.web.dto.MyCompanySaveRequestDto;
 import org.springframework.stereotype.Service;
 
