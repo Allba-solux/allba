@@ -17,8 +17,11 @@ public class Scheduler {
     // schdule id 따로 있음
     private String companyCode;
 
-    private String startDateTime;
-    private String endDateTime;
+    private String startDate;
+    private String startTime;
+    private String endDate;
+    private String endTime;
+
     private String userName;
 
 
