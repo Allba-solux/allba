@@ -1,8 +1,9 @@
 spring:
   data:
     mongodb:
-       uri: mongodb+srv://freshman:1234@cluster0.dw1q2ck.mongodb.net/?retryWrites=true&w=majority
-       database: allba
+      uri: mongodb+srv://freshman:1234@cluster0.dw1q2ck.mongodb.net/?retryWrites=true&w=majority
+      #mongodb+srv://freshman:1234@cluster0.dw1q2ck.mongodb.net/?retryWrites=true&w=majority
+      database: allba
 debug: true
 logging:
   level:
