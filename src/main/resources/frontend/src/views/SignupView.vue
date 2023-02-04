@@ -47,19 +47,19 @@
         </button>
         </div>   
         
-         <p>{{ logMessage }}</p>
+         <!-- <p>{{ logMessage }}</p> -->
         </form>    
         </div> 
         </div> 
     </body>
-    </html>
+</html>
     </div>
 </template>
 <script>
-import { registerUser } from '@/api/index';
+import axios from "axios";
 
 export default {
-    data(){
+    data() {
         return {
             //form value
             pid: '',
@@ -68,34 +68,64 @@ export default {
             phone: '',
             email: '',
             //log
-            logMessage:'',
+            logMessage: '',
         };
     },
     methods: {
-        async submitForm(){
-            console.log('폼제출');
-            const userData = {
+        async submitForm() {
+            axios.post('http://localhost:9090/user/new', {
                 pid: this.pid,
                 pwd: this.pwd,
                 name: this.name,
                 phone: this.phone,
                 email: this.email,
-            }
-            const { data } = await registerUser(userData);
-            console.log(data.name);
-            this.logMessage = `${data.name}님 환영합니다`;
-            this.initForm();
+            })
+                .then(res => {
+                    console.log(res);
+                    // this.logMessage = `${res.name}님 환영합니다`;
+                    // this.initForm();
+                },
+
+
+                ).catch(err => {
+                    console.log(err);
+                })
         },
-        initForm() {
-            this.pid = '';
-            this.pwd = '';
-            this.name = '';
-            this.phone = '';
-            this.email = '';
-        }
+        // initForm() {
+        //     this.pid = '';
+        //     this.pwd = '';
+        //     this.name = '';
+        //     this.phone = '';
+        //     this.email = '';
+        // }
+    }
+}
+
+//         async submitForm() {
+
+//             console.log('폼제출');
+//             const userData = {
+//                 pid: this.pid,
+//                 pwd: this.pwd,
+//                 name: this.name,
+//                 phone: this.phone,
+//                 email: this.email,
+//             }
+//             const { data } = await registerUser(userData);
+//             console.log(data.name);
+//             this.logMessage = `${data.name}님 환영합니다`;
+//             this.initForm();
+//         },
+//         initForm() {
+//             this.pid = '';
+//             this.pwd = '';
+//             this.name = '';
+//             this.phone = '';
+//             this.email = '';
+//         }
         
-    },
-};
+//     },
+// };
 </script>
 <style scoped>
 .line{
