@@ -19,17 +19,17 @@ public class CompanyService {
     }
 
     // 모든 지점 조회
-    public List<Company> findCompanies() {
+    public List<Company> findAllCompanies() {
         return companyRepository.findAll();
     }
 
     // 지점 검색(이름으로)
-    public List<Company> findOne(String companyName) {
+    public List<Company> findByCompanyName(String companyName) {
         return companyRepository.findByCompanyName(companyName);
     }
 
     // 지점 삭제
-    public int delete(String companyCode){
+    public int deleteCompany(String companyCode){
         companyRepository.deleteById(companyCode);
         return 1;
     }

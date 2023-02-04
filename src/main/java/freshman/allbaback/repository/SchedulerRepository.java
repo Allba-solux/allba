@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface SchedulerRepository extends MongoRepository<Scheduler,String> {
-    //public List<Scheduler> findByCompanyName(String companyName);
+    public List<Scheduler> findByCompanyCode(String companyName);
 }

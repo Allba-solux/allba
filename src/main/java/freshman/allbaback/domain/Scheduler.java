@@ -16,6 +16,7 @@ public class Scheduler {
 
     // schdule id 따로 있음
     private String companyCode;
+    private Boolean help = false;
 
     private String startDate;
     private String startTime;
