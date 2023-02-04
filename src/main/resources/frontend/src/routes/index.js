@@ -1,75 +1,69 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import FindingView from '../views/FindingView.vue';
-import LoginView from '../views/LoginView.vue';
-import MainView from '../views/MainView.vue';
-import ScheduleView from '../views/ScheduleView.vue';
-import CalendarView from '../views/CalendarView.vue';
-import RegisterView from '../views/RegisterView.vue';
-import NoScheduleView from '../views/NoScheduleView.vue';
-import SignupView from '../views/SignupView.vue';
-import RoomView from '../views/RoomView.vue';
-import Mypage1View from '../views/Mypage1View.vue';
-import Mypage2View from '../views/Mypage2View.vue';
-import Mypage3View from '../views/Mypage3View.vue';
-
+import Vue from "vue";
+import VueRouter from "vue-router";
+import FindingView from "../views/FindingView.vue";
+import LoginView from "../views/LoginView.vue";
+import MainView from "../views/MainView.vue";
+import ScheduleView from "../views/ScheduleView.vue";
+import CalendarView from "../views/CalendarView.vue";
+import RegisterView from "../views/RegisterView.vue";
+import NoScheduleView from "../views/NoScheduleView.vue";
+import SignupView from "../views/SignupView.vue";
+import RoomView from "../views/RoomView.vue";
+import Mypage1View from "../views/Mypage1View.vue";
+import Mypage2View from "../views/Mypage2View.vue";
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-    path: '/',
-    redirect: '/main',
+      path: "/",
+      redirect: "/main",
     },
     {
-    path : '/main',
-    component:MainView,
+      path: "/main",
+      component: MainView,
     },
     {
-    path: '/finding',
-    component:FindingView,
+      path: "/finding",
+      component: FindingView,
     },
     {
-    path:'/login',
-    component:LoginView,
+      path: "/login",
+      component: LoginView,
     },
     {
-    path:'/schedule',
-    component:ScheduleView,
+      path: "/schedule",
+      component: ScheduleView,
     },
     {
-      path: '/calendar',
+      path: "/calendar",
       component: CalendarView,
     },
     {
-      path: '/register',
-      component:RegisterView
+      path: "/register",
+      component: RegisterView,
     },
     {
-      path:'/noschedule',
-      component:NoScheduleView
+      path: "/noschedule",
+      component: NoScheduleView,
     },
     {
-      path:'/signup',
-      component:SignupView
+      path: "/signup",
+      component: SignupView,
     },
     {
-      path: '/room',
-      component:RoomView
+      path: "/room",
+      component: RoomView,
     },
     {
-      path: '/mypage1/:id',
-      component: Mypage1View
+      path: "/mypage1/:id",
+      component: Mypage1View,
     },
     {
-      path: '/mypage2/:id',
-      component: Mypage2View
+      path: "/mypage2/:id",
+      component: Mypage2View,
     },
-    {
-      path: '/mypage3/:id',
-      component: Mypage3View
-    },
-  ]
-})
+  ],
+});

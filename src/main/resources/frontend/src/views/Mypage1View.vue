@@ -86,7 +86,48 @@
     </table>
   </div>
 </template>
-<script></script>
+
+<script>
+import axios from "axios";
+
+export default {
+  //   component: {
+  //     RegisterItem,
+  //   },
+  props: {
+    companyName: {
+      type: String,
+    },
+  },
+  data() {
+    return {
+      users: [],
+      companyName: "",
+    };
+  },
+  methods: {
+    // async fetchData() {
+    //   const { data } = await fetchPosts();
+    //   this.postItems = data.posts;
+    // },
+    getData: function () {
+      var vm = this;
+      axios
+        .get("http://localhost:9090/user/{user_id}/mypage")
+        .then(function (response) {
+          console.log(response.data);
+          vm.users = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+  //   created() {
+  //     this.fetchData();
+  //   },
+};
+</script>
 <style scoped>
 .title {
   font-weight: 600;
