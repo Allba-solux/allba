@@ -8,7 +8,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">num</th>
       <th scope="col">name</th>
       <th scope="col">date</th>
       <th scope="col">time</th>
@@ -18,22 +18,9 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><button type="button" class="btn btn-success">수락하기</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td><button type="button" class="btn btn-success">수락하기</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>지은</td>
+      <td>2022-01-19</td>
+      <td>(오픈) 9:00~12:00</td>
       <td><button type="button" class="btn btn-success">수락하기</button></td>
     </tr>
   </tbody>
