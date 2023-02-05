@@ -15,7 +15,7 @@
           placeholder="Password"
           id="password"
           class="account"
-          v-model="password"
+          v-model="pwd"
         />
         <button id="login" class="account" type="submit">login</button>
         <div class="register">
@@ -37,9 +37,9 @@ export default {
   data() {
     return {
       //form values
-      name: "",
-      pid: "",
-      pwd: "",
+      name: '',
+      pid: '',
+      pwd: '',
       //log
       // logMessage: "",
     };
@@ -54,16 +54,16 @@ export default {
         console.log(res);
         this.$router.push("/main");
         // this.logMessage = `${data.user.name}님 어서오세요`;
-        this.initForm();
+        // this.initForm();
       }
         ).catch(err=>{
   console.log(err);
 })
     },
-    initForm() {
-      this.pid = "";
-      this.pwd = "";
-    },
+    // initForm() {
+    //   this.pid = "";
+    //   this.pwd = "";
+    // },
   },
 };
 </script>
