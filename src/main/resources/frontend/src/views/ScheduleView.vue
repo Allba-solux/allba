@@ -59,7 +59,7 @@
                   id="name"
                   class="int"
                   maxlength="20"
-                  v-bind="userName"
+                  v-model="userName"
                 />
               </span>
             </div>
@@ -67,21 +67,40 @@
         </div>
       </div>
 
-      <!-- <div class="form-floating">
-                <textarea class="form-control mt-3" placeholder="Leave a comment here" id="floatingTextarea2"
-                    style="height: 100px"></textarea>
-                <label for="floatingTextarea2">내용</label>
-            </div> -->
-
-      <!-- <div class="d-flex flex-row-reverse gap-2 mt-4">
-            <router-link to="/schedule"><button type="button" class="btn btn-outline-dark">
-                목록
-            </button></router-link>
-            <button type="submit" class="btn btn-outline-success">등록</button>
-        </div> 
-        </div>-->
+ 
     </div>
-     <ScheduleList></ScheduleList>
+    
+   <h2 class="title" @click="getData">스케쥴링</h2>
+    <hr class="line">
+ 
+   <div class="p-4 mt-5" >
+        <div class="row g-1">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">start</th>
+      <th scope="col">end</th>
+      <th scope="col">btn</th>
+  
+    </tr>
+</thead>
+  <tbody>
+    <tr v-for="user in users">
+    <!-- <th scope="row">1</th> -->
+      <td>{{ user.userName }} </td>
+      <td>{{user.startDate}} | {{ user.startTime }} </td>
+
+      <td>{{ user.endDate }} | {{ user.endTime}}</td>
+      <td></td>
+      <td><button type="button" class="btn btn-success">수락하기</button></td>
+    </tr>
+  </tbody>
+</table>
+
+        </div>
+        </div> 
+    
     <hr class="underline" />
     <div class="demo-app">
       <!-- <div class="demo-app-sidebar">
@@ -150,17 +169,21 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 export default {
+  mounted() {
+    
+  },
   components: {
     FullCalendar, // make the <FullCalendar> tag available,
     ScheduleList,
   },
   data: function () {
     return {
-      startDate: "",
-      startTime: "",
-      endDate: "",
-      endTime: "",
-      userName: "",
+      users:[],
+      startDate: '',
+      startTime: '',
+      endDate: '',
+      endTime: '',
+      userName: '',
       calendarOptions: {
         plugins: [
           dayGridPlugin,
@@ -206,7 +229,7 @@ export default {
         title: $route.params.id,
         start: this.startday,
         end: this.endday,
-        allDay: selectInfo.allday,
+        allDay: selectInfo.allday,                                                 
       });
     },
     async submitForm() {
@@ -223,6 +246,18 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+        });
+    },
+       async getData() {
+      var vm = this;
+      axios
+        .get("http://localhost:9090/scheduler/${companyCode}")
+        .then(function (response) {
+          console.log(response.data);
+          vm.users = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
         });
     },
     handleWeekendsToggle() {
