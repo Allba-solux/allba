@@ -25,7 +25,7 @@
             <input
               type="time"
               class="form-select"
-              id="inputGroupSelect02"
+              id="inputGtroupSelec02"
               v-model="startTime"
             />
             <label class="input-group-text" for="inputGroupSelect01"
@@ -169,9 +169,6 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 export default {
-  mounted() {
-    
-  },
   components: {
     FullCalendar, // make the <FullCalendar> tag available,
     ScheduleList,
@@ -223,18 +220,10 @@ export default {
     },
   },
   methods: {
-    makeevent() {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title: $route.params.id,
-        start: this.startday,
-        end: this.endday,
-        allDay: selectInfo.allday,                                                 
-      });
-    },
+
     async submitForm() {
       axios
-        .post("http://localhost:9090/scheduler/${companyCode}/new", {
+        .post("http://localhost:9090/scheduler/{companyCode}/new", {
           startDate: this.startDate,
           startTime: this.startTime,
           endDate: this.endDate,
@@ -251,7 +240,7 @@ export default {
        async getData() {
       var vm = this;
       axios
-        .get("http://localhost:9090/scheduler/${companyCode}")
+        .get("http://localhost:9090/scheduler/{companyCode}")
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;
@@ -262,6 +251,11 @@ export default {
     },
     handleWeekendsToggle() {
       this.calendarOptions.weekends = !this.calendarOptions.weekends; // update a property
+    },
+        makeevent() {
+          calendarApi.addEvent({
+        url:'http://localhost:9090/scheduler/{companyCode}' ,                                              
+      });
     },
     // handleDateSelect(selectInfo) {
     //   let title = prompt('Please enter a new title for your event')
