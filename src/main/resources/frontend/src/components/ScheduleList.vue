@@ -14,20 +14,18 @@
       <th scope="col">time</th>
       <th scope="col">btn</th>
     </tr>
-  </thead>
+</thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>지은</td>
-      <td>2022-01-19</td>
-      <td>(오픈) 9:00~12:00</td>
+    <tr v-for="user in users">
+    <th scope="row">1</th>
+      <td>{{ userName }}</td>
+      <td>{{startDate}} {{ startTime }}</td>
+      <td>{{endDate }} {{ endTime }}</td>
       <td><button type="button" class="btn btn-success">수락하기</button></td>
     </tr>
   </tbody>
 </table>
-        
 
- 
         </div>
         </div> 
             </div>
@@ -35,14 +33,39 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 import ScheduleItem from '@/components/ScheduleItem.vue'
-
 
 
 export default {
     components: {
         ScheduleItem,
-    }
+    },
+    data() {
+        return {
+            companyCode: '',
+            help: true ,
+            startDate: '',
+            startTime: '',
+            endDate: '',
+            endTime: '',
+            userName:'', 
+        }
+    },
+    methods: {
+    getData: function () {
+      var vm = this;
+      axios
+        .get("http://localhost:9090/scheduler/{companyCode}")
+        .then(function (response) {
+          console.log(response.data);
+          vm.users = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
 }
 </script>
 <style scoped>
