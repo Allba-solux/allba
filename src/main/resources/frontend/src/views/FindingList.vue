@@ -14,7 +14,7 @@
         placeholder="지점명을 입력하세요"
         aria-label="Recipient's username"
         aria-describedby="button-addon2"
-        v-model="searchkeyword"/>
+      />
       <button
         class="btn btn-outline-secondary"
         type="button"

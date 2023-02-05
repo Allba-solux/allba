@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <template v-if="isUserLogin" > -->
-    <ScheduleList></ScheduleList>
+   
 
     <h2 class="title">대타 등록하기</h2>
     <hr class="line" />
@@ -81,6 +81,7 @@
         </div> 
         </div>-->
     </div>
+     <ScheduleList></ScheduleList>
     <hr class="underline" />
     <div class="demo-app">
       <!-- <div class="demo-app-sidebar">
