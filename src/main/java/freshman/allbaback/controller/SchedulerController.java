@@ -2,6 +2,7 @@ package freshman.allbaback.controller;
 
 import freshman.allbaback.domain.Company;
 import freshman.allbaback.domain.Scheduler;
+import freshman.allbaback.domain.SchedulerFullCalendar;
 import freshman.allbaback.domain.members.Members;
 import freshman.allbaback.service.SchedulerService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class SchedulerController {
     }
 
     @GetMapping("{companyCode}")
-    public List<Scheduler> viewAll(@PathVariable String companyCode) {
+    public List<SchedulerFullCalendar> viewAll(@PathVariable String companyCode) {
         return schedulerService.findSchedulers(companyCode);
     }
 

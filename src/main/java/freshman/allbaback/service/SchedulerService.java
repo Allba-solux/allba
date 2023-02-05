@@ -1,6 +1,7 @@
 package freshman.allbaback.service;
 
 import freshman.allbaback.domain.Scheduler;
+import freshman.allbaback.domain.SchedulerFullCalendar;
 import freshman.allbaback.repository.SchedulerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,8 +22,16 @@ public class SchedulerService {
     }
 
     // 스케줄 조회
-    public List<Scheduler> findSchedulers(String companyCode) {
-        return schedulerRepository.findByCompanyCode(companyCode);
+    public List<SchedulerFullCalendar> findSchedulers(String companyCode) {
+        List<Scheduler> V_Calendars = schedulerRepository.findByCompanyCode(companyCode);
+        List<SchedulerFullCalendar> fullCalendars = new ArrayList<SchedulerFullCalendar>();
+        for(Scheduler i : V_Calendars) {
+            String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
+            String end = i.getEndDate() + "T" + i.getEndTime()+ ":00";
+            String title = i.getUserName();
+            fullCalendars.add(new SchedulerFullCalendar(start, end, title));
+        }
+        return fullCalendars;
     }
 
     // 스케줄 삭제
