@@ -24,14 +24,14 @@
             ><span class="regi"> 회원가입</span></router-link
           >
         </div>
-        {{ logMessage }}
+        <!-- {{ logMessage }} -->
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import { loginUser } from "@/api/index";
+import axios from "axios";
 
 export default {
   data() {
@@ -41,20 +41,24 @@ export default {
       pid: "",
       pwd: "",
       //log
-      logMessage: "",
+      // logMessage: "",
     };
   },
   methods: {
     async submitForm() {
-      const userData = {
+      axios.post('http://localhost:8080/user/login', {
         pid: this.pid,
         pwd: this.pwd,
-      };
-      const { data } = await loginUser(userData);
-      console.log(data.user.name);
-      this.$router.push("/main");
-      // this.logMessage = `${data.user.name}님 어서오세요`;
-      this.initForm();
+      })
+        .then(res => {
+        console.log(res);
+        this.$router.push("/main");
+        // this.logMessage = `${data.user.name}님 어서오세요`;
+        this.initForm();
+      }
+        ).catch(err=>{
+  console.log(err);
+})
     },
     initForm() {
       this.pid = "";
