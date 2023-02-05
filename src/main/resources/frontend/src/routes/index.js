@@ -4,7 +4,6 @@ import FindingView from "../views/FindingView.vue";
 import LoginView from "../views/LoginView.vue";
 import MainView from "../views/MainView.vue";
 import ScheduleView from "../views/ScheduleView.vue";
-import CalendarView from "../views/CalendarView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import NoScheduleView from "../views/NoScheduleView.vue";
 import SignupView from "../views/SignupView.vue";
@@ -37,10 +36,6 @@ export default new VueRouter({
     {
       path: "/schedule",
       component: ScheduleView,
-    },
-    {
-      path: "/calendar",
-      component: CalendarView,
     },
     {
       path: "/register",
