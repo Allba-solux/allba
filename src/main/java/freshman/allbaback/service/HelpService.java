@@ -1,7 +1,9 @@
 package freshman.allbaback.service;
 
 import freshman.allbaback.domain.Help;
+import freshman.allbaback.domain.Helper;
 import freshman.allbaback.repository.HelpRepository;
+import freshman.allbaback.web.dto.HelpAllowRequestDto;
 import freshman.allbaback.web.dto.HelpSaveRequestDto;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,17 @@ public class HelpService {
     //해당 지점의 대타 요청 리스트
     public Optional<Object> findByCompanyName(String companyName) {
         return helpRepository.findByCompanyName(companyName);
+    }
+
+    public String allow(String id,HelpAllowRequestDto dto) {
+        Help entity = helpRepository.findById(id).get();
+
+        entity.allow(dto.getId(),dto.getHelperPid(), dto.getHelperName());
+
+        return helpRepository.save(entity).getId();
+    }
+    public Optional<Help> findByHelperPid(String helperPid) {
+        return helpRepository.findByHelperPid(helperPid);
     }
 
 }

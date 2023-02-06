@@ -1,6 +1,7 @@
 package freshman.allbaback.repository;
 
 import freshman.allbaback.domain.Help;
+import freshman.allbaback.domain.Helper;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface HelpRepository extends MongoRepository<Help,String> {
 
     Optional<Object> findByCompanyName(String companyName);
     Optional<Object> findByPart(String part);
+    Optional<Help> findByHelperPid(String helperPid);
 }
