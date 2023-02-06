@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RestController
+@RestController//해당 컨트롤러가 json 형태로 반환되게 만들어줌. @ResponseBody 여러번 선언할 거 한번에 해결.
 public class MembersApiController {
     private final MembersService membersService;
     @PostMapping("/user/new")
