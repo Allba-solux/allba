@@ -14,3 +14,7 @@ logging:
           autoconfigure: ERROR
 server:
   port: 9090
+  servlet:
+    session:
+      tracking-modes: cookie
+      timeout: 30m
