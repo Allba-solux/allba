@@ -8,6 +8,8 @@
       <div class="header">
         <div class="input-group mb-3">
           <form @submit.prevent="submitForm">
+            <div class="input-group">
+               <input type="text" class="form-control" placeholder="이름입력" aria-label="Username" aria-describedby="basic-addon1"></input>
             <label class="input-group-text" for="inputGroupSelect01"
               >시작일</label
             >
@@ -17,6 +19,7 @@
               id="inputGroupSelect01"
               v-model="startDate"
             />
+      
             <label class="input-group-text" for="inputGroupSelect02"
               >시작시간</label
             >
@@ -44,22 +47,15 @@
               id="inputGroupSelect03"
               v-model="endTime"
             />
+             
+            </div>
             <div class="d-flex flex-row-reverse gap-2 mt-4">
               <button type="submit" class="btn btn-warning">
                 대타 요청하기
               </button>
             </div>
             <div>
-              <h3 class="join_title"><label for="userName">이름</label></h3>
-              <span class="box int_name">
-                <input
-                  type="text"
-                  id="name"
-                  class="int"
-                  maxlength="20"
-                  v-model="userName"
-                />
-              </span>
+            
             </div>
           </form>
         </div>
@@ -274,8 +270,8 @@ export default {
 }
 
 .line {
-  width: 90%;
-  margin-left: 5%;
+  width: 98%;
+  margin-left: 1%;
 }
 
 .unedrline {
