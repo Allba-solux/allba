@@ -1,11 +1,9 @@
 <template>
   <div>
-    <!-- <template v-if="isUserLogin" > -->
-   
+    <!-- 대타등록  -->
 
     <h2 class="title">대타 등록하기</h2>
     <hr class="line" />
-
     <div class="container">
       <div class="header">
         <div class="input-group mb-3">
@@ -25,7 +23,7 @@
             <input
               type="time"
               class="form-select"
-              id="inputGroupSelect02"
+              id="inputGtroupSelec02"
               v-model="startTime"
             />
             <label class="input-group-text" for="inputGroupSelect01"
@@ -66,72 +64,43 @@
           </form>
         </div>
       </div>
-
- 
     </div>
-    
-   <h2 class="title" @click="getData">스케쥴링</h2>
-    <hr class="line">
- 
-   <div class="p-4 mt-5" >
-        <div class="row g-1">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">name</th>
-      <th scope="col">start</th>
-      <th scope="col">end</th>
-      <th scope="col">btn</th>
-  
-    </tr>
-</thead>
-  <tbody>
-    <tr v-for="user in users">
-    <!-- <th scope="row">1</th> -->
-      <td>{{ user.userName }} </td>
-      <td>{{user.startDate}} | {{ user.startTime }} </td>
 
-      <td>{{ user.endDate }} | {{ user.endTime}}</td>
-      <td></td>
-      <td><button type="button" class="btn btn-success">수락하기</button></td>
-    </tr>
-  </tbody>
-</table>
+    <!-- 대타리스트  -->
 
-        </div>
-        </div> 
-    
+    <h2 class="title" @click="getData">스케쥴링</h2>
+    <hr class="line" />
+
+    <div class="p-4 mt-5">
+      <div class="row g-1">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">name</th>
+              <th scope="col">start</th>
+              <th scope="col">end</th>
+              <th scope="col">btn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in users">
+              <!-- <th scope="row">1</th> -->
+              <td>{{ user.userName }}</td>
+              <td>{{ user.startDate }} | {{ user.startTime }}</td>
+
+              <td>{{ user.endDate }} | {{ user.endTime }}</td>
+              <td></td>
+              <td>
+                <button type="button" class="btn btn-success">수락하기</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <hr class="underline" />
     <div class="demo-app">
-      <!-- <div class="demo-app-sidebar">
-        <div class="demo-app-sidebar-section">
-          <h2>Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
-        </div>
-        <div class="demo-app-sidebar-section">
-          <label>
-            <input
-              type="checkbox"
-              :checked="calendarOptions.weekends"
-              @change="handleWeekendsToggle"
-            />
-            toggle weekends
-          </label>
-        </div>
-        <div class="demo-app-sidebar-section">
-          <h2>All Events ({{ currentEvents.length }})</h2>
-          <ul>
-            <li v-for="event in currentEvents" :key="event.id">
-              <b>{{ event.title }}</b>
-              <i>{{ event.starttime }}</i>
-            </li>
-          </ul>
-        </div>
-      </div> -->
       <div class="demo-app-main">
         <FullCalendar class="demo-app-calendar" :options="calendarOptions">
           <template v-slot:eventContent="arg">
@@ -169,16 +138,16 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 export default {
-  mounted() {
-    
-  },
   components: {
     FullCalendar, // make the <FullCalendar> tag available,
     ScheduleList,
   },
   data: function () {
     return {
-      users:[],
+      users: [],
+      start: '',
+      end: '',
+      title: '',
       startDate: '',
       startTime: '',
       endDate: '',
@@ -190,14 +159,6 @@ export default {
           timeGridPlugin,
           interactionPlugin, // needed for dateClick
         ],
-        customButtons: {
-          myCustomButton: {
-            text: "custom!",
-            click: function () {
-              alert("clicked the custom button!");
-            },
-          },
-        },
         headerToolbar: {
           left: "prev,next today myCustomButton",
           center: "title",
@@ -214,27 +175,26 @@ export default {
         eventClick: this.handleEventClick,
         eventsSet: this.handleEvents,
       },
-      currentEvents: [],
+      currentEvents: [
+        {
+          url: 'http://localhost:9090/scheduler/{companyCode}',
+          method: 'GET',
+          }
+      ],
     };
   },
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
     },
+
+
   },
-  methods: {
-    makeevent() {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title: $route.params.id,
-        start: this.startday,
-        end: this.endday,
-        allDay: selectInfo.allday,                                                 
-      });
-    },
+      methods: {
+
     async submitForm() {
       axios
-        .post("http://localhost:9090/scheduler/${companyCode}/new", {
+        .post("http://localhost:9090/scheduler/{companyCode}/help", {
           startDate: this.startDate,
           startTime: this.startTime,
           endDate: this.endDate,
@@ -248,10 +208,10 @@ export default {
           console.log(err);
         });
     },
-       async getData() {
+    async getData() {
       var vm = this;
       axios
-        .get("http://localhost:9090/scheduler/${companyCode}")
+        .get("http://localhost:9090/scheduler/{companyCode}/data")
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;
@@ -261,36 +221,49 @@ export default {
         });
     },
     handleWeekendsToggle() {
-      this.calendarOptions.weekends = !this.calendarOptions.weekends; // update a property
+      this.calendarOptions.weekends = !this.calendarOptions.weekends // update a property
     },
-    // handleDateSelect(selectInfo) {
-    //   let title = prompt('Please enter a new title for your event')
-    //   let calendarApi = selectInfo.view.calendar
-    //   calendarApi.unselect() // clear date selection
-    //   if (title) {
-    //     calendarApi.addEvent({
-    //       id: createEventId(),
-    //       title,
-    //       start:selectInfo.startStr,
-    //       end:selectInfo.endStr,
-    //       allDay: selectInfo.allDay
-    //     })
-    //   }
-    // },
+    handleDateSelect(selectInfo) {
+      let title = prompt('Please enter a new title for your event')
+      let calendarApi = selectInfo.view.calendar
+      calendarApi.unselect() // clear date selection
+      if (title) {
+        calendarApi.addEvent({
+          id: createEventId(),
+          title,
+          start: selectInfo.startStr,
+          end: selectInfo.endStr,
+          allDay: selectInfo.allDay
+        })
+      }
+    },
     handleEventClick(clickInfo) {
-      if (
-        confirm(
-          `Are you sure you want to delete the event '${clickInfo.event.title}'`
-        )
-      ) {
-        clickInfo.event.remove();
+      if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+        clickInfo.event.remove()
       }
     },
     handleEvents(events) {
-      this.currentEvents = events;
+      this.currentEvents = events
     },
-  },
-};
+    EVENT_LIST() {
+      axios
+        .get("http://localhost:9090/scheduler/{companyCode}")
+        .then(function (response) {
+          console.log(response.data);
+          this.users = response.data;
+          for (var i = 0; i < users.length; i++) {
+            INITIAL_EVENTS[i].title.push(user.title),
+              INITIAL_EVENTS[i].start.push(user.start),
+              INITIAL_EVENTS[i].end.push(user.end)
+          }
+          return INITIAL_EVENTS;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+}
 </script>
 <style scoped>
 .title {
