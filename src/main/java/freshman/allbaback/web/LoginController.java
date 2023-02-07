@@ -29,21 +29,21 @@ public class LoginController {
                         BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
-            return "frontend/src/views/LoginView";
+            return "LoginView";
         }
 
         Members loginMember = loginService.login(loginDto.getPid(), loginDto.getPwd());
 
         if (loginMember == null) {
             bindingResult.reject("Fail", "아이디 또는 비밀번호가 맞지 않습니다.");
-            return "frontend/src/views/LoginView";
+            return "LoginView";
         }
 
         // 로그인 성공 처리
         HttpSession session = request.getSession();
         session.setAttribute(LoginSession.LOGIN_MEMBER, loginMember);
 
-        return "redirect:" + redirectURL;
+        return "redirect:LoginView";
     }
 
     @PostMapping("/logout")

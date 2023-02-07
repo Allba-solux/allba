@@ -1,7 +1,6 @@
 package freshman.allbaback.web;
 
 import freshman.allbaback.domain.Help;
-import freshman.allbaback.domain.Helper;
 import freshman.allbaback.service.HelpService;
 import freshman.allbaback.web.dto.HelpAllowRequestDto;
 import freshman.allbaback.web.dto.HelpSaveRequestDto;
