@@ -110,25 +110,19 @@
 import axios from "axios";
 
 export default {
-  //   component: {
-  //     RegisterItem,
-  //   },
   props: {
-    companyName: {
+    user_id: {
       type: String,
     },
   },
   data() {
     return {
       users: [],
-      companyName: "",
+      user_id: "",
+      company_id: "",
     };
   },
   methods: {
-    // async fetchData() {
-    //   const { data } = await fetchPosts();
-    //   this.postItems = data.posts;
-    // },
     getData: function () {
       var vm = this;
       axios
@@ -142,9 +136,6 @@ export default {
         });
     },
   },
-  //   created() {
-  //     this.fetchData();
-  //   },
 };
 </script>
 <style scoped>
