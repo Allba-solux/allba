@@ -25,25 +25,6 @@
         </button>
       </router-link>
     </div>
-
-    <div>
-      <router-link to="/inputwage/:id">
-        <button
-          type="button"
-          class="btn"
-          id="editbtn"
-          style="
-            margin-bottom: 3rem;
-            margin-right: 25%;
-            float: right;
-            background-color: white;
-          "
-        >
-          시급 입력하기
-        </button>
-      </router-link>
-    </div>
-
     <table class="table caption-top">
       <caption>
         나의 알바
