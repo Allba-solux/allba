@@ -1,6 +1,7 @@
 <template >
   <div>
-    <img src="@/assets/main2.jpg" class="img-fluid"></img>
+       <link href="custom.css" rel="stylesheet"/>
+    <img src="@/assets/main2.jpg"></img>
            <footer>
            <h2 class="footerLogo">Allba<i class="fa-solid fa-clock-rotate-left"></i></h2>
            <ul>
@@ -9,6 +10,7 @@
                <li><span class="copyright">COPYRIGHT 2023</span></li>  
            </ul>
        </footer>
+  
    
     
   </div>
@@ -18,7 +20,9 @@ export default {
   
 }
 </script>
-<style>
+<style scoped>
+
+img{width: 100%;}
 footer {padding-top: 10px;padding-bottom: 10px; text-align: center;}
 footer .footerLogo {font-size: 30px;; font-weight: 900; letter-spacing: -4px; color: #39312b; margin: 40px 0 20px;}
 footer ul li{font-size: 17px; line-height: 1.4;}
