@@ -3,10 +3,10 @@
     <!-- 대타등록  -->
 
     <h2 class="title">대타 등록하기</h2>
-    <hr class="line" />
+    <hr class="line mb-5" />
     <div class="container">
       <div class="header">
-        <div class="input-group mb-3">
+        <div class="input-group">
           <form @submit.prevent="submitForm">
             <div class="input-group">
                <input type="text" class="form-control" placeholder="이름입력" aria-label="Username" aria-describedby="basic-addon1"></input>
@@ -50,7 +50,7 @@
              
             </div>
             <div class="d-flex flex-row-reverse gap-2 mt-4">
-              <button type="submit" class="btn btn-warning">
+              <button type="submit" class="btn btn-warning mt-1">
                 대타 요청하기
               </button>
             </div>
