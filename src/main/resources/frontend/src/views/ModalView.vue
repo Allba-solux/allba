@@ -11,22 +11,11 @@ export default {
     <div v-if="show" class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">
-          <slot name="header">Allba </slot>
-          <i class="fa-solid fa-clock-rotate-left"></i>
+          <slot name="header">Allba</slot>
         </div>
 
         <div class="modal-body">
-          <slot name="body">참가요청이 완료되었습니다! </slot>
-        </div>
-
-        <div class="modal-input">
-          <!--<slot name="text">시급 입력 : </slot>-->
-          <input
-            type="text"
-            class="form-control"
-            placeholder="시급을 입력하세요"
-            v-model="searchName"
-          />
+          <slot name="body">참가요청이 완료되었습니다!</slot>
         </div>
 
         <div class="modal-footer">
@@ -66,29 +55,16 @@ export default {
 
 .modal-header h3 {
   margin-top: 0;
-  margin-right: 0;
-  color: #000;
+  color: #42b983;
 }
 
 .modal-body {
   margin: 20px 0;
 }
 
-.modal-input {
-  margin: 20px 0;
-  margin-top: 0;
-}
-
 .modal-default-button {
   float: right;
-}
-
-.form-control {
-  font-size: 14px;
-}
-
-.fa-solid {
-  left: 30%;
+  border-radius: 15px;
 }
 
 /*
