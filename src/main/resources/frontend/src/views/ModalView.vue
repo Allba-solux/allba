@@ -11,18 +11,27 @@ export default {
     <div v-if="show" class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">
-          <slot name="header">Allba</slot>
+          <slot name="header">Allba </slot>
+          <i class="fa-solid fa-clock-rotate-left"></i>
         </div>
 
         <div class="modal-body">
-          <slot name="body">참가요청이 완료되었습니다!</slot>
+          <slot name="body">참가요청이 완료되었습니다! </slot>
+        </div>
+
+        <div class="modal-input">
+          <!--<slot name="text">시급 입력 : </slot>-->
+          <input
+            type="text"
+            class="form-control"
+            placeholder="시급을 입력하세요"
+            v-model="searchName"
+          />
         </div>
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="btn btn-light" @click="$emit('close')">
-              OK
-            </button>
+            <button class="btn btn-light" @click="$emit('close')">OK</button>
           </slot>
         </div>
       </div>
