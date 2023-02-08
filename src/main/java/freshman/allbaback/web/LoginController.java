@@ -45,6 +45,7 @@ public class LoginController {
 
         return "redirect:LoginView";
     }
+    
 
     @PostMapping("/logout")
     public String logout(HttpServletRequest request) {
