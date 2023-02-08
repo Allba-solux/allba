@@ -12,7 +12,7 @@
 
             <!-- 2. 로그인 했을때 유저네임   -->
             <template v-if="isUserLogin">
-            <li><a><router-link to="/mypage1/:id">{{ $store.state.name }}님</router-link></a></li>
+            <li><a><router-link to="/mypage1/:id">{{ $store.state.pid }}님</router-link></a></li>
             <li><a href="javascript:;" @click="logoutUser">Logout</a></li>
             </template> 
                        <template v-else> 
