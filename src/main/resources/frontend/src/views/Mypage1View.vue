@@ -8,24 +8,6 @@
       ><span class="user">{{ $route.params.id }}님</span>
     </div>
 
-    <div>
-      <router-link to="/mypage2/:id">
-        <button
-          type="button"
-          class="btn"
-          id="registerbtn"
-          style="
-            margin-bottom: 3rem;
-            margin-right: 25%;
-            float: right;
-            background-color: #d5d4df;
-          "
-        >
-          급여 확인하기
-        </button>
-      </router-link>
-    </div>
-
     <table class="table caption-top">
       <caption>
         나의 알바
@@ -33,15 +15,15 @@
       <thead>
         <tr>
           <th scope="col">지점명</th>
-          <th scope="col">시간</th>
-          <th scope="col">급여</th>
+          <th scope="col">2월 근무 시간</th>
+          <th scope="col">총 급여</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>메가커피 눈송점</td>
-          <td>20:00 ~ 23:00</td>
-          <td>9,160 /</td>
+          <td>48</td>
+          <td>300000</td>
         </tr>
       </tbody>
     </table>
@@ -59,7 +41,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>유숙명님</td>
+          <td>김순헌</td>
           <td>20:00 ~ 23:00</td>
           <td>1회</td>
         </tr>
@@ -93,9 +75,12 @@ import axios from "axios";
 
 export default {
   props: {
-    user_id: {
+    id: {
       type: String,
     },
+    //company_id: {
+    //type: String,
+    //},
   },
   data() {
     return {
@@ -104,11 +89,12 @@ export default {
       company_id: "",
     };
   },
+
   methods: {
     getData: function () {
       var vm = this;
       axios
-        .post("http://localhost:9090/user/{user_id}/mypage")
+        .get("http://localhost:9090/user/{user_id}/mypage")
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;

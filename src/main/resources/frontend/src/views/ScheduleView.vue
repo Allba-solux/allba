@@ -87,7 +87,10 @@
               <td>{{ user.endDate }} | {{ user.endTime }}</td>
               <td></td>
               <td>
-                <button type="button" class="btn btn-success">수락하기</button>
+                <button 
+                  type="button" 
+                  class="btn btn-success">
+                  수락하기</button>
               </td>
             </tr>
           </tbody>

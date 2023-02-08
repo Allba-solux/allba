@@ -37,27 +37,28 @@ export default {
   data() {
     return {
       //form values
-      pid: '',
-      pwd: '',
+      pid: "",
+      pwd: "",
       //log
       // logMessage: "",
     };
   },
   methods: {
     async submitForm() {
-      axios.post('http://localhost:9090/login', {
-        pid: this.pid,
-        pwd: this.pwd,
-      })
-        .then(res => {
-        console.log(res);
-        this.$router.push("/main");
-        // this.logMessage = `${data.user.name}님 어서오세요`;
-        // this.initForm();
-      }
-        ).catch(err=>{
-  console.log(err);
-})
+      axios
+        .post("http://localhost:9090/login", {
+          pid: this.pid,
+          pwd: this.pwd,
+        })
+        .then((res) => {
+          console.log(res);
+          this.$router.push("main");
+          // this.logMessage = `${data.user.name}님 어서오세요`;
+          // this.initForm();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     // initForm() {
     //   this.pid = "";
