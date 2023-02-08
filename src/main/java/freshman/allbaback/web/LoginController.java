@@ -29,7 +29,7 @@ public class LoginController {
                         BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
-            return "frontend/src/views/LoginView";
+            return "frontend/src/views/LoginView.vue";
         }
 
         Members loginMember = loginService.login(loginDto.getPid(), loginDto.getPwd());

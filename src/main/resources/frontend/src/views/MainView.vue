@@ -1,6 +1,10 @@
 <template >
   <div>
+      <link href="custom.css" rel="stylesheet"/>
     <img src="@/assets/main3.jpg"></img>
+
+     
+
            <footer>
            <h2 class="footerLogo">Allba<i class="fa-solid fa-clock-rotate-left"></i></h2>
            <ul>

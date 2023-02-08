@@ -61,7 +61,6 @@ export default new VueRouter({
       path: "/mypage2/:id",
       component: Mypage2View,
     },
-
     {
       path: "/finding/modal",
       component: ModalView,
