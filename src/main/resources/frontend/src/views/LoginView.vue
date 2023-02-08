@@ -37,8 +37,8 @@ export default {
   data() {
     return {
       //form values
-      pid: '',
-      pwd: '',
+      pid: "",
+      pwd: "",
     };
   },
   methods: {
@@ -51,9 +51,9 @@ export default {
         .then((res) => {
           console.log(res);
           console.log(this.pid);
-          this.$store.commit('setPid', this.pid);
+          this.$store.commit("setUsername", this.pid);
 
-          alert(this.pid + '님 어서오세요');
+          alert(this.pid + "님 어서오세요");
           this.initForm();
           this.$router.push("/main");
         })

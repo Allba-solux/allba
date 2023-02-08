@@ -1,17 +1,17 @@
-import axios from 'axios';
-import Vue from 'vue';
-import Vuex from 'vuex';
+import axios from "axios";
+import Vue from "vue";
+import Vuex from "vuex";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    pid: '',
-    name: '',
+    pid: "",
+    name: "",
   },
   getters: {
     isLogin(state) {
-      return state.pid !== '';
+      return state.pid !== "";
     },
   },
   mutations: {
@@ -22,10 +22,9 @@ export default new Vuex.Store({
       state.name = name;
     },
     clearPid(state) {
-      state.pid = '';
+      state.pid = "";
     },
-
-  }
+  },
   // actions: {
   //   fetch_user(context) {
   //     axios.get('http://localhost:9090/login').then(function (response) {
