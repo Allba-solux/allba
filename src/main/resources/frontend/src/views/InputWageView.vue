@@ -28,25 +28,7 @@
     </form>
   </div>
 </template>
-<script>
-import axios from "axios";
-
-export default {
-  data() {
-    return {
-      wage: "",
-    };
-  },
-  methods: {
-    async submitForm() {
-      const response = await createPost({
-        wage: this.wage,
-      });
-      console.log(response);
-    },
-  },
-};
-</script>
+<script></script>
 <style scoped>
 .title {
   font-weight: 600;

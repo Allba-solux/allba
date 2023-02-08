@@ -1,7 +1,7 @@
 <template>
     <div id="bo">
     <div class ="wrap">
-    <!-- <link href="custom.css" rel="stylesheet"> -->
+    <link href="custom.css" rel="stylesheet">
     <header>
     <router-link to="/main" class="logo">Allba<span id="clock"><i class="fa-solid fa-clock-rotate-left"></i></span></router-link>
     <nav>
