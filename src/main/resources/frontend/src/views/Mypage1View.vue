@@ -108,7 +108,7 @@ export default {
     getData: function () {
       var vm = this;
       axios
-        .get("http://localhost:9090/user/{user_id}/mypage")
+        .post("http://localhost:9090/user/{user_id}/mypage")
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;
