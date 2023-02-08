@@ -15,14 +15,16 @@ import java.util.Optional;
 public class HelpController {
     private final HelpService helpService;
 
+    // 대타 요청
     @PostMapping("scheduler/help/request/")
     public Help save(@RequestBody HelpSaveRequestDto requestDto){
         return helpService.save(requestDto);
     }
 
+    // 대타 리스트 조회
     @GetMapping("scheduler/{companyName}/help/")
-    public Object findByCompanyName(@PathVariable String companyName) {
-        return helpService.findByCompanyName(companyName).get();
+    public List<Help> findByCompanyName(@PathVariable String companyName) {
+        return helpService.findByCompanyName(companyName);
     }
 
     //내가 요청한 리스트
@@ -30,6 +32,8 @@ public class HelpController {
     public List<Help> findByRequestPid(@PathVariable String requestPid) {
         return helpService.findByRequestPid(requestPid);
     }
+
+    // 대타 수락
     @PatchMapping("scheduler/help/{id}/allow")
     public String allow(@PathVariable String id, @RequestBody HelpAllowRequestDto dto) {
         return helpService.allow(id, dto);

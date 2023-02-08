@@ -38,6 +38,7 @@ public class HelpService {
     //대타 요청
     public Help save(HelpSaveRequestDto requestDto) {
         Help help = settingTime(requestDto.toEntity());
+        help.setEndDate(help.getStartDate());
         return helpRepository.save(help);
     }
 
@@ -46,7 +47,7 @@ public class HelpService {
         return helpRepository.findByRequestPid(requestPid);
     }
     //해당 지점의 대타 요청 리스트
-    public Optional<Object> findByCompanyName(String companyName) {
+    public List<Help> findByCompanyName(String companyName) {
         return helpRepository.findByCompanyName(companyName);
     }
 
