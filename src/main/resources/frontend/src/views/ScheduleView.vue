@@ -6,12 +6,17 @@
     <hr class="line mb-5" />
     <div class="container">
       <div class="header">
-        <div class="input-group">
+           <div class="input-group">
           <form @submit.prevent="submitForm">
+            
             <div class="input-group">
-               <input type="text" class="form-control" placeholder="이름입력" aria-label="Username" aria-describedby="basic-addon1" v-model="userName"></input>
+              
+            <label class="input-group-text" for="inputGroupSelect02"
+              >이름</label
+            >
+               <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-model="userName"></input>
             <label class="input-group-text" for="inputGroupSelect01"
-              >시작일</label
+              >날짜</label
             >
             <input
               type="date"
@@ -21,32 +26,15 @@
             />
       
             <label class="input-group-text" for="inputGroupSelect02"
-              >시작시간</label
+              >타임</label
             >
-            <input
-              type="time"
-              class="form-select"
-              id="inputGtroupSelec02"
-              v-model="startTime"
-            />
-            <label class="input-group-text" for="inputGroupSelect01"
-              >종료일</label
-            >
-            <input
-              type="date"
-              class="form-select"
-              id="inputGroupSelect01"
-              v-model="endDate"
-            />
-            <label class="input-group-text" for="inputGroupSelect03"
-              >종료 시간</label
-            >
-            <input
-              type="time"
-              class="form-select"
-              id="inputGroupSelect03"
-              v-model="endTime"
-            />
+            <select class="form-select" aria-label="Default select example" v-model="part">
+  <option value="오픈">오픈</option>
+  <option value="미들">미들</option>
+  <option value="마감">마감</option>
+</select>
+       
+  
              
             </div>
             <div class="d-flex flex-row-reverse gap-2 mt-4">
@@ -143,10 +131,12 @@ export default {
   },
   data: function () {
     return {
+      requestPid:this.$store.state.pid,
       users: [],
       start: '',
       end: '',
       title: '',
+      part:'',
       startDate: '',
       startTime: '',
       endDate: '',
@@ -181,6 +171,7 @@ export default {
     isUserLogin() {
       return this.$store.getters.isLogin;
     },
+    
 
 
   },
@@ -189,10 +180,10 @@ export default {
     async submitForm() {
       axios
         .post("http://localhost:9090/scheduler/{companyCode}/help", {
+          requestPid: this.requestPid,
           startDate: this.startDate,
-          startTime: this.startTime,
           endDate: this.endDate,
-          endTime: this.endTime,
+          part: this.part,
           userName: this.userName,
         })
         .then((res) => {
@@ -209,6 +200,8 @@ export default {
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;
+          this.initForm();
+       
         })
         .catch(function (error) {
           console.log(error);
@@ -251,23 +244,9 @@ export default {
     handleEvents(events) {
       this.currentEvents = events
     },
-    EVENT_LIST() {
-      axios
-        .get("http://localhost:9090/scheduler/{companyCode}")
-        .then(function (response) {
-          console.log(response.data);
-          this.users = response.data;
-          for (var i = 0; i < users.length; i++) {
-            INITIAL_EVENTS[i].title.push(user.title),
-              INITIAL_EVENTS[i].start.push(user.start),
-              INITIAL_EVENTS[i].end.push(user.end)
-          }
-          return INITIAL_EVENTS;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+    initForm() {
+
+    },
   }
 }
 </script>
