@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     pid: "",
+    name: "",
   },
   getters: {
     isLogin(state) {
@@ -14,10 +15,13 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    setUsername(state, pid) {
+    setPid(state, pid) {
       state.pid = pid;
     },
-    clearUsername(state) {
+    setName(state, name) {
+      state.name = name;
+    },
+    clearPid(state) {
       state.pid = "";
     },
   },
