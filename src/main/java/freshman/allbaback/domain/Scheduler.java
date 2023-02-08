@@ -15,7 +15,7 @@ import java.util.Map;
 public class Scheduler {
 
     // schdule id 따로 있음
-    private String companyCode;
+    private String companyName;
     private Boolean help = false;
 
     private String startDate;

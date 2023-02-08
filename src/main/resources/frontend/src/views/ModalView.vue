@@ -4,6 +4,10 @@ export default {
     show: Boolean,
   },
 };
+function radioChange(event) {
+  var selected = document.querySelector('input[name="radioBtn"]:checked').value;
+  console.log("순수 js selected : ", selected);
+}
 </script>
 
 <template>
@@ -11,18 +15,54 @@ export default {
     <div v-if="show" class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">
-          <slot name="header">Allba</slot>
+          <slot name="header">Allba </slot>
+          <i class="fa-solid fa-clock-rotate-left"></i>
         </div>
 
         <div class="modal-body">
-          <slot name="body">참가요청이 완료되었습니다!</slot>
+          <slot name="body">참가요청이 완료되었습니다! </slot>
+        </div>
+
+        <div class="modal-input">
+          <!--<slot name="text">시급 입력 : </slot>-->
+          <input
+            type="text"
+            class="form-control"
+            placeholder="시급을 입력하세요"
+            v-model="searchName"
+          />
+        </div>
+
+        <div class="modal-radio">
+          <input
+            type="radio"
+            name="radioBtn"
+            id="r1"
+            onclick="radioChange()"
+            value="첫번째 버튼"
+          />
+          <label for="r1">오픈 &nbsp;</label>
+          <input
+            type="radio"
+            name="radioBtn"
+            id="r2"
+            onclick="radioChange()"
+            value="두번째 버튼"
+          />
+          <label for="r2"> 미들 &nbsp;</label>
+          <input
+            type="radio"
+            name="radioBtn"
+            id="r3"
+            onclick="radioChange()"
+            value="세번째 버튼"
+          />
+          <label for="r3">마감 </label>
         </div>
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="btn btn-light" @click="$emit('close')">
-              OK
-            </button>
+            <button class="btn btn-light" @click="$emit('close')">OK</button>
           </slot>
         </div>
       </div>

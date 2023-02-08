@@ -17,16 +17,16 @@ public class SchedulerController {
 
     private final SchedulerService schedulerService;
 
-    @PostMapping("/{companyCode}/new")
-    public String createNewSchedule(@PathVariable String companyCode, @RequestBody Scheduler scheduler) {
-        scheduler.setCompanyCode(companyCode);
+    @PostMapping("/{companyName}/new")
+    public String createNewSchedule(@PathVariable String companyName, @RequestBody Scheduler scheduler) {
+        scheduler.setCompanyName(companyName);
         schedulerService.addSchedule(scheduler);
         return "newSchedule";
     }
 
-    @GetMapping("{companyCode}")
-    public List<SchedulerFullCalendar> viewAll(@PathVariable String companyCode) {
-        return schedulerService.findSchedulers(companyCode);
+    @GetMapping("/{companyName}")
+    public List<SchedulerFullCalendar> viewAll(@PathVariable String companyName) {
+        return schedulerService.findSchedulers(companyName);
     }
 
 //    @DeleteMapping("/{companyCode}/{scheduler_id}/delete")
@@ -34,14 +34,14 @@ public class SchedulerController {
 //        schedulerService.deleteSchedule(scheduler_id);
 //    }
 
-    @GetMapping("{companyCode}/data")
-    public List<Scheduler> viewData(@PathVariable String companyCode) {
-        return schedulerService.findDatas(companyCode);
-    }
+//    @GetMapping("{companyCode}/data")
+//    public List<Scheduler> viewData(@PathVariable String companyCode) {
+//        return schedulerService.findDatas(companyCode);
+//    }
 
-    @PostMapping("/{companyCode}/help")
-    public void allbaPlease(@PathVariable String companyCode, @RequestBody Scheduler scheduler) {
-        scheduler.setCompanyCode(companyCode);
+    @PostMapping("/{companyName}/help")
+    public void allbaPlease(@PathVariable String companyName, @RequestBody Scheduler scheduler) {
+        scheduler.setCompanyName(companyName);
         scheduler.setHelp(Boolean.TRUE);
         schedulerService.addSchedule(scheduler);
     }
