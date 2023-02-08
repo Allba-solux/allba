@@ -26,24 +26,6 @@
       </router-link>
     </div>
 
-    <div>
-      <router-link to="/inputwage/:id">
-        <button
-          type="button"
-          class="btn"
-          id="editbtn"
-          style="
-            margin-bottom: 3rem;
-            margin-right: 25%;
-            float: right;
-            background-color: white;
-          "
-        >
-          시급 입력하기
-        </button>
-      </router-link>
-    </div>
-
     <table class="table caption-top">
       <caption>
         나의 알바
@@ -173,21 +155,14 @@ table caption {
   margin-left: 8%;
   width: 90%;
 }
+
 #registerbtn {
-  margin-left: 2%;
-  position: absolute;
-  width: 200px;
-  height: 50spx;
-  left: 900px;
-  top: 240px;
-}
-#editbtn {
   margin-left: 2%;
   position: absolute;
   width: 130px;
   height: 30spx;
-  left: 1060px;
-  top: 382px;
+  left: 935px;
+  top: 250px;
   background-color: white;
   border-color: black;
 }

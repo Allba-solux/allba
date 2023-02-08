@@ -10,7 +10,6 @@ import SignupView from "../views/SignupView.vue";
 import RoomView from "../views/RoomView.vue";
 import Mypage1View from "../views/Mypage1View.vue";
 import Mypage2View from "../views/Mypage2View.vue";
-import InputWageView from "../views/InputWageView.vue";
 import ModalView from "../views/ModalView.vue";
 
 Vue.use(VueRouter);
@@ -61,10 +60,6 @@ export default new VueRouter({
     {
       path: "/mypage2/:id",
       component: Mypage2View,
-    },
-    {
-      path: "/inputwage/:id",
-      component: InputWageView,
     },
     {
       path: "/modal",
