@@ -5,7 +5,7 @@
       <h2 class="title">MyPage</h2>
       <hr class="line" />
       <i class="fa-solid fa-user"></i
-      ><span class="user">{{ $route.params.id }}님</span>
+      ><span class="user">{{ $store.state.pid }}님</span>
     </div>
 
     <table class="table caption-top">
