@@ -24,7 +24,7 @@
             ><span class="regi"> 회원가입</span></router-link
           >
         </div>
-        <!-- {{ logMessage }} -->
+        {{ logMessage }}
       </form>
     </div>
   </div>
@@ -37,31 +37,36 @@ export default {
   data() {
     return {
       //form values
-      pid: '',
-      pwd: '',
-      //log
-      // logMessage: "",
+      pid: "",
+      pwd: "",
     };
   },
   methods: {
     async submitForm() {
-      axios.post('http://localhost:9090/login', {
-        pid: this.pid,
-        pwd: this.pwd,
-      })
-        .then(res => {
-        console.log(res);
-        this.$router.push("/main");
-        // this.logMessage = `${data.user.name}님 어서오세요`;
-        // this.initForm();
-      }
-        ).catch(err=>{
-  console.log(err);
-})
+      axios
+        .post("http://localhost:9090/login", {
+          pid: this.pid,
+          pwd: this.pwd,
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(this.pid);
+          this.$store.commit("setUsername", this.pid);
+
+          alert(this.pid + "님 어서오세요");
+          this.initForm();
+          this.$router.push("/main");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    // initForm() {
-    //   this.pid = "";
-    //   this.pwd = "";
+    initForm() {
+      this.pid = "";
+      this.pwd = "";
+    },
+    // alertForm() {
+    //   this.logMessage = `${this.pid}님 어서오세요`;
     // },
   },
 };

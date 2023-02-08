@@ -80,8 +80,9 @@ export default {
             })
                 .then(res => {
                     console.log(res);
-                    // this.logMessage = `${res.name}님 환영합니다`;
-                    // this.initForm();
+                    alert(this.pid + '님 환영합니다.')
+                    this.$store.commit('setName', this.name);
+                    this.$router.push("/main");
                 },
 
 
