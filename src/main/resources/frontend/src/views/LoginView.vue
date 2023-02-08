@@ -37,7 +37,6 @@ export default {
   data() {
     return {
       //form values
-      name: '',
       pid: '',
       pwd: '',
       //log
@@ -46,7 +45,7 @@ export default {
   },
   methods: {
     async submitForm() {
-      axios.post('http://localhost:8080/user/login', {
+      axios.post('http://localhost:9090/login', {
         pid: this.pid,
         pwd: this.pwd,
       })

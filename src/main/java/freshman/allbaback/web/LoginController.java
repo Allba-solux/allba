@@ -29,6 +29,7 @@ public class LoginController {
                         BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
+
             return "LoginView";
         }
 
@@ -36,6 +37,7 @@ public class LoginController {
 
         if (loginMember == null) {
             bindingResult.reject("Fail", "아이디 또는 비밀번호가 맞지 않습니다.");
+
             return "LoginView";
         }
 

@@ -67,8 +67,6 @@ export default {
             pwd: '',
             phone: '',
             email: '',
-            //log
-            logMessage: '',
         };
     },
     methods: {
