@@ -21,14 +21,14 @@ public class HelpService {
     }
     private Help settingTime(Help help) {
         if(assertTrue(help.getPart().equals("오픈"))){
-            help.setStartTime("09:00");
+            help.setStartTime("08:00");
             help.setEndTime("12:00");
         } else if (assertTrue(help.getPart().equals("미들"))) {
             help.setStartTime("12:00");
             help.setEndTime("16:00");
         }else if (assertTrue(help.getPart().equals("마감"))) {
             help.setStartTime("16:00");
-            help.setEndTime("21:00");
+            help.setEndTime("20:00");
         }
         return help;
     }
@@ -53,8 +53,8 @@ public class HelpService {
     public String allow(String id,HelpAllowRequestDto dto) {
         Help entity = helpRepository.findById(id).get();
 
-        entity.allow(dto.getId(),dto.getHelperPid(), dto.getHelperName());
-
+        entity.setHelperPid(dto.getHelperPid());
+        entity.setHelperName(dto.getHelperName());
         return helpRepository.save(entity).getId();
     }
     public Optional<Help> findByHelperPid(String helperPid) {
