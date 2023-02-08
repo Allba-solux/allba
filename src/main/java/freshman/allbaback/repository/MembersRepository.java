@@ -12,11 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public interface MembersRepository extends MongoRepository<Members,String> {
     Members save(Members members);
 
-    Optional<Object> findByPid(String pid);
+    Optional<Members> findByPid(String pid);
 
-    default Optional<Members> findByLoginPid(String pid) {
-        return this.findAll().stream()
-                .filter(m -> m.getPid().equals(pid))
-                .findFirst();
-    }
 }

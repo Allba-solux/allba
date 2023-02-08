@@ -32,7 +32,7 @@ public class MembersService {
         return membersRepository.save(requestDto.toEntity()).getPid();
     }
 
-    public Optional<Object> findByPid(String id) {
+    public Optional<Members> findByPid(String id) {
         return membersRepository.findByPid(id);
     }
     public List<Members> findMembers() {
