@@ -8,8 +8,7 @@ import java.util.Optional;
 
 public interface HelpRepository extends MongoRepository<Help,String> {
     List<Help> findByRequestPid(String requestPid);
-
     List<Help> findByCompanyName(String companyName);
     Optional<Object> findByPart(String part);
-    Optional<Help> findByHelperPid(String helperPid);
+    List<Help> findByHelperPid(String helperPid);
 }

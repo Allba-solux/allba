@@ -40,17 +40,16 @@ public class HelpController {
     }
 
     //내가 도와준 리스트
-    @GetMapping("scheduler/helpers/{helperPid}")
-    public Optional<Help> findByHelperPid(@PathVariable String helperPid) {
+    @GetMapping("scheduler/give/{helperPid}")
+    public List<Help> findByHelperPid(@PathVariable String helperPid) {
         return helpService.findByHelperPid(helperPid);
     }
 
-//    //나를 도움준 리스트
-//    @GetMapping("scheduler/helpers/{requestPid}")
-//    public Optional<Helper> findAllByRequestPid(@PathVariable String requestPid,@PathVariable String helperPid) {
-//        if (helperPid!=null)
-//        return helperService.findAllByRequestPid(requestPid);
-//    }
+    //나를 도움준 리스트
+    @GetMapping("scheduler/take/{requestPid}")
+    public List<Help> findAllByRequestPid(@PathVariable String requestPid) {
+        return helpService.findAllByRequestPid(requestPid);
+    }
 
 
 }

@@ -7,6 +7,7 @@ import freshman.allbaback.web.dto.HelpSaveRequestDto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,8 +58,17 @@ public class HelpService {
         entity.setHelperName(dto.getHelperName());
         entity.setHelperPid(dto.getHelperPid());
     }
-    public Optional<Help> findByHelperPid(String helperPid) {
+    public List<Help> findByHelperPid(String helperPid) {
         return helpRepository.findByHelperPid(helperPid);
     }
 
+    public List<Help> findAllByRequestPid(String requestPid) {
+        List<Help> all = helpRepository.findByRequestPid(requestPid);
+        List<Help> res = new ArrayList<Help>();
+        for(Help i : all) {
+            if(i.getHelperPid() != null)
+                res.add(i);
+        }
+        return res;
+    }
 }
