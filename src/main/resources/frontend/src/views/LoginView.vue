@@ -37,8 +37,6 @@ export default {
   data() {
     return {
       //form values
-      pid: "",
-      pwd: "",
       //log
       // logMessage: "",
     };
