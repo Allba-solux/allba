@@ -29,14 +29,16 @@ public class LoginController {
                         BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
-            return "/LoginView.vue";
+
+            return "LoginView";
         }
 
         Members loginMember = loginService.login(loginDto.getPid(), loginDto.getPwd());
 
         if (loginMember == null) {
             bindingResult.reject("Fail", "아이디 또는 비밀번호가 맞지 않습니다.");
-            return "/LoginView";
+
+            return "LoginView";
         }
 
         // 로그인 성공 처리
@@ -45,6 +47,7 @@ public class LoginController {
 
         return "redirect:LoginView";
     }
+    
 
     @PostMapping("/logout")
     public String logout(HttpServletRequest request) {
