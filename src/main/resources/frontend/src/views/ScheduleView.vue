@@ -9,7 +9,7 @@
         <div class="input-group">
           <form @submit.prevent="submitForm">
             <div class="input-group">
-               <input type="text" class="form-control" placeholder="이름입력" aria-label="Username" aria-describedby="basic-addon1"></input>
+               <input type="text" class="form-control" placeholder="이름입력" aria-label="Username" aria-describedby="basic-addon1" v-model="userName"></input>
             <label class="input-group-text" for="inputGroupSelect01"
               >시작일</label
             >
