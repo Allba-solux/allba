@@ -97,7 +97,7 @@
 
     <hr class="underline" />
     <div class="demo-app">
-      <div class="demo-app-main">
+      <div class="demo-app-main" @click="getFull">
         <FullCalendar class="demo-app-calendar" :options="calendarOptions">
           <template v-slot:eventContent="arg">
             <b>{{ arg.timeText }}</b>
@@ -170,13 +170,8 @@ export default {
         select: this.handleDateSelect,
         eventClick: this.handleEventClick,
         eventsSet: this.handleEvents,
+        events: [],
       },
-      currentEvents: [
-        {
-          url: 'http://localhost:9090/scheduler/{companyCode}',
-          method: 'GET',
-          }
-      ],
     };
   },
   computed: {
@@ -211,6 +206,18 @@ export default {
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    async getFull() {
+      var cal = this;
+      axios
+        .get("http://localhost:9090/scheduler/{companyCode}")
+        .then(function (response) {
+          console.log(response.data);
+          cal.calendarOptions.events = response.data;
         })
         .catch(function (error) {
           console.log(error);
