@@ -5,7 +5,7 @@
     <header>
     <router-link to="/main" class="logo">Allba<span id="clock"><i class="fa-solid fa-clock-rotate-left"></i></span></router-link>
     <nav>
-        <ul class="gnb">
+        <ul class="gnb" id="glb">
             <li><a><router-link to="/finding">지점찾기</router-link></a></li>
             <li><a><router-link to="/schedule">스케쥴링</router-link></a></li>
             <!-- 1. 로그인x -->
@@ -43,6 +43,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 #bo header {
     background-color:rgba(255, 253, 242, 0.968);
     width: 100%;
@@ -69,6 +71,9 @@ export default {
     float: right;
 }
 
+#glb{
+    height:120px;
+}
 #bo header nav .gnb li {
     display: inline-block;
     margin-left: 60px;

@@ -38,16 +38,68 @@
     <hr class="line" />
     <div class="p-5 10" style="width: 88%; margin-left: 6%">
       <div class="row g-5">
-        
-        <div v-for="user in users" v-if="user.companyName.includes(searchName)" class="col-3">
+        <div
+          v-for="user in users"
+          v-if="user.companyName.includes(searchName)"
+          class="col-3"
+        >
           <div class="row">
             <!-- <div class="col-sm-4 col-lg-3"> -->
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">{{ user.companyName }}</h5>
-                <p class="card-text">{{ user.companyDescription }}</p>
-                <a href="#" class="btn btn-light">참가요청</a>
-                <!-- </div> -->
+                <h5 class="card-title mt-1">{{ user.companyName }}</h5>
+                <p class="card-text mt-1 mb-2">{{ user.companyDescription }}</p>
+                <div class=" d-flex flex-row-reverse gap-2 mt-2 ">
+                <button class="btn btn-light" id="show-modal" @click="showModal = true">
+                  참가 요청
+                </button>
+                </div>
+
+                 <Transition name="modal">
+    <div v-if="show" class="modal-mask">
+      <div class="modal-container">
+        <div class="modal-header">
+          <slot name="header">Allba </slot>
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+
+        <div class="modal-body">
+          <slot name="body">참가요청이 완료되었습니다! </slot>
+        </div>
+
+        <div class="modal-input">
+          <!--<slot name="text">시급 입력 : </slot>-->
+          <input
+            type="text"
+            class="form-control"
+            placeholder="시급을 입력하세요"
+            v-model="searchName"
+          />
+        </div>
+
+        <div class="modal-footer">
+          <slot name="footer">
+            <button class="btn btn-light" @click="$emit('close')">
+              OK
+            </button>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </Transition>
+
+                <Teleport to="body">
+                  <!-- use the modal component, pass in the prop -->
+                  <modal :show="showModal" @close="showModal = false">
+                    <template #header>
+                      <h3>Allba</h3>
+                    </template>
+                  </modal>
+                </Teleport>
+                <!--<a href="#" class="btn btn-light"> 
+                  참가요청
+                </a>
+                 </div> -->
               </div>
             </div>
           </div>
@@ -58,6 +110,7 @@
 </template>
 <script>
 import axios from "axios";
+import Modal from "./ModalView.vue";
 
 export default {
   props: {
@@ -65,11 +118,15 @@ export default {
       type: String,
     },
   },
+  components: {
+    Modal,
+  },
   data() {
     return {
       users: [],
-      companyName: '',
-      searchName:'',
+      companyName: "",
+      searchName: "",
+      showModal: false,
     };
   },
   methods: {
@@ -80,7 +137,7 @@ export default {
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;
-        }) 
+        })
         .catch(function (error) {
           console.log(error);
         });
@@ -108,4 +165,6 @@ h5 {
 h5 {
   font-size: 18px;
 }
+
+
 </style>
