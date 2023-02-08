@@ -1,7 +1,6 @@
 package freshman.allbaback.repository;
 
 import freshman.allbaback.domain.Help;
-import freshman.allbaback.domain.Helper;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
