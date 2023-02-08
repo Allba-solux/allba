@@ -61,15 +61,15 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @GetMapping("/")
-    public String home(@SessionAttribute(name = LoginSession.LOGIN_MEMBER, required = false) Members loginMember, Model model) {
-        // 세션에 회원 데이터가 없으면 홈으로 이동
-        if (loginMember == null) {
-            return "세션없음";
-        }
-
-        // 세션이 유지되면 로그인 홈으로 이동
-        model.addAttribute("member", loginMember);
-        return "세션 유지";
-    }
+//    @GetMapping("/")
+//    public String home(@SessionAttribute(name = LoginSession.LOGIN_MEMBER, required = false) Members loginMember, Model model) {
+//        // 세션에 회원 데이터가 없으면 홈으로 이동
+//        if (loginMember == null) {
+//            return "세션없음";
+//        }
+//
+//        // 세션이 유지되면 로그인 홈으로 이동
+//        model.addAttribute("member", loginMember);
+//        return "세션 유지";
+//    }
 }
