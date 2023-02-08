@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,8 @@ import java.util.Map;
 @Setter
 @Document(collection = "schedule")
 public class Scheduler {
-
+    @MongoId
+    private String id;
     // schdule id 따로 있음
     private String companyCode;
     private Boolean help = false;

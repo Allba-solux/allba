@@ -4,6 +4,7 @@ import freshman.allbaback.domain.Company;
 import freshman.allbaback.domain.Scheduler;
 import freshman.allbaback.domain.SchedulerFullCalendar;
 import freshman.allbaback.domain.members.Members;
+import freshman.allbaback.service.DataService;
 import freshman.allbaback.service.SchedulerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 public class SchedulerController {
 
     private final SchedulerService schedulerService;
+    private final DataService dataService;
 
     @PostMapping("/{companyCode}/new")
     public String createNewSchedule(@PathVariable String companyCode, @RequestBody Scheduler scheduler) {
@@ -44,11 +46,13 @@ public class SchedulerController {
         scheduler.setCompanyCode(companyCode);
         scheduler.setHelp(Boolean.TRUE);
         schedulerService.addSchedule(scheduler);
+        dataService.addDATA(scheduler.getId(), scheduler.getCompanyCode(), scheduler.getUserName(), "");
     }
 
-//    @PutMapping("/{companyCode}/{scheduler_id}/DATAaccept")
-//    public void allbaOK(@PathVariable String companyCode, @PathVariable String scheduler_id) {
-//        //schedulerService.allbaOK(id);
-//    }
+    @PutMapping("/{companyCode}/{scheduler_id}/{user_id}/dataAccept")
+    public void allbaOK(@PathVariable String companyCode, @PathVariable String scheduler_id, @PathVariable String user_id) {
+        System.out.println("ok");
+        schedulerService.allbaOK(scheduler_id, user_id);
+    }
 
 }
