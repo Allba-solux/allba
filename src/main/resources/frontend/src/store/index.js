@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -5,23 +6,27 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    name: '',
-    pid:'',
+    pid: '',
   },
   getters: {
     isLogin(state) {
-      return state.name !== '';
+      return state.pid !== '';
     },
   },
   mutations: {
-    setUsername(state, name) {
-      state.name = name;
+    setUsername(state, pid) {
+      state.pid = pid;
     },
     clearUsername(state) {
-      state.username = '';
+      state.pid = '';
     },
-    inputpid(state) {
-      return( pid = state )
-    }
-  },
+
+  }
+  // actions: {
+  //   fetch_user(context) {
+  //     axios.get('http://localhost:9090/login').then(function (response) {
+  //       context.commit(state, response)
+  //     })
+  //   }
+  // }
 });
