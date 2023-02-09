@@ -8,6 +8,7 @@ function radioChange(event) {
   var selected = document.querySelector('input[name="radioBtn"]:checked').value;
   console.log("순수 js selected : ", selected);
 }
+
 </script>
 
 <template>
@@ -20,50 +21,53 @@ function radioChange(event) {
         </div>
 
         <div class="modal-body">
-          <slot name="body">참가요청이 완료되었습니다! </slot>
+          <slot name="body">정보를 입력해주세요 </slot>
         </div>
+     
 
         <div class="modal-input">
           <!--<slot name="text">시급 입력 : </slot>-->
+                     <div class="input-group m-1">
+                          <label class="input-group-text" for="inputGroupSelect02"
+              >시급</label
+            >
           <input
             type="text"
             class="form-control"
-            placeholder="시급을 입력하세요"
             v-model="searchName"
           />
-        </div>
+          </div>
 
-        <div class="modal-radio">
-          <input
-            type="radio"
-            name="radioBtn"
-            id="r1"
-            onclick="radioChange()"
-            value="첫번째 버튼"
-          />
-          <label for="r1">오픈 &nbsp;</label>
-          <input
-            type="radio"
-            name="radioBtn"
-            id="r2"
-            onclick="radioChange()"
-            value="두번째 버튼"
-          />
-          <label for="r2"> 미들 &nbsp;</label>
-          <input
-            type="radio"
-            name="radioBtn"
-            id="r3"
-            onclick="radioChange()"
-            value="세번째 버튼"
-          />
-          <label for="r3">마감 </label>
-        </div>
+            <div class="input-group m-1">
+                          <label class="input-group-text" for="inputGroupSelect02"
+              >요일</label
+            >
+            <select class="form-select" aria-label="Default select example" v-model="part">
+  <option value="오픈">주말</option>
+  <option value="미들">평일</option>
+</select>
+                </div>
+                <div class="input-group m-1">
+            <label class="input-group-text" for="inputGroupSelect02"
+              >타임</label
+            >
+            <select class="form-select" aria-label="Default select example" v-model="part">
+  <option value="오픈">오픈</option>
+  <option value="미들">미들</option>
+  <option value="마감">마감</option>
+</select>
+</div>
+      
+       
+            </div>
+
+      
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="btn btn-light" @click="$emit('close')">OK</button>
+            <button class="btn btn-light mt-2" @click="$emit('close')">완료</button>
           </slot>
+          
         </div>
       </div>
     </div>
@@ -95,7 +99,7 @@ function radioChange(event) {
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
+  color:black;
 }
 
 .modal-body {
