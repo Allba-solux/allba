@@ -52,6 +52,15 @@ public class HelpService {
     }
     //해당 지점의 대타 요청 리스트
     public List<Help> findByCompanyName(String companyName) {
+        List<Help> all = helpRepository.findByCompanyName(companyName);
+        List<Help> datas = new ArrayList<Help>();
+        for(Help i : all) {
+            if(i.getHelperName() == null) datas.add(i);
+        }
+        return datas;
+    }
+    //해당 지점의 대타 요청 수락 포함 리스트
+    public List<Help> findByCompanyName2(String companyName) {
         return helpRepository.findByCompanyName(companyName);
     }
     public List<Help> findAll(){
