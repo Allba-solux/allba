@@ -2,7 +2,7 @@
   <div>
     <!-- 대타등록  -->
 
-    <h2 class="title">대타 요청</h2></br><h3 class="input-group-text"> 지점명: 스타벅스 숙대점</h3>
+    <h2 class="title">대타 요청</h2></br><h3><i class="fa-solid fa-house"></i> 지점명: 스타벅스 숙대점</h3>
     <hr class="line mb-5" />
     <div class="container">
       <div class="header">
@@ -37,7 +37,7 @@
   
              
             </div>
-            <div class="d-flex flex-row-reverse gap-2 mt-4">
+            <div id="requestbtn" class="d-flex flex-row-reverse gap-2 mt-4 " >
               <button type="submit" class="btn btn-warning mt-1">
                 대타 요청하기
               </button>
@@ -64,18 +64,17 @@
               <th scope="col">Date</th>
               <th scope="col">Part</th>
               <th scope="col">Time</th>
+              <th scope="col">Btn</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="user in users">
               <!-- <th scope="row">1</th> -->
-              <td>{{ user.requestName }}</td>
+              <th>{{ user.requestName }}</th>
 
-              <td>{{ user.startDate }} | {{ user.startTime }}</td>
+              <td>{{ user.startDate }} </td> <td>{{ user.part }}</td>
 
-              <td>{{ user.endDate }} | {{ user.endTime }}</td>
-
-              <td></td>
+              <td>{{ user.startTime }} ~ {{ user.endTime }} </td>
               <td>
                 <button 
                   type="button"
@@ -254,6 +253,20 @@ export default {
 }
 </script>
 <style scoped>
+h3{
+  font-size:16px;
+    margin-left: 8%;
+}
+
+#requestbtn{
+  margin-right:-16%;
+  margin-bottom: 10%;
+}
+.input-group{
+  margin-top: 1.5%;
+  margin-left: 16%;
+
+}
 .title {
   font-weight: 600;
   font-size: 32px;
@@ -313,5 +326,12 @@ b {
   /* the calendar root */
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.table{
+  width:80%;
+  margin-left:12%;
+  /* margin-top: -4%; */
+  text-align: center;
 }
 </style>
