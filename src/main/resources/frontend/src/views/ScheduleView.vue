@@ -183,7 +183,8 @@ export default {
                 startDate: this.startDate,
                 part: this.part,
                 startTime: this.startTime,
-                endTime: this.endTime
+                endTime: this.endTime,
+                companyName:"스타벅스숙대점"
               })
               .then((res) => {
                 console.log(res);
