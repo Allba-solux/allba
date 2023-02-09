@@ -86,6 +86,7 @@ export default {
     font-size: 18px;
     text-transform: uppercase;
     position: relative;
+    margin-top:-20%;
 }
 
 #clock{
