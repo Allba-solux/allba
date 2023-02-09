@@ -27,7 +27,7 @@ export default new Vuex.Store({
 
     },
     clearPid(state) {
-      state.pid = "";
+      state.pid = '';
     },
   },
   // actions: {
