@@ -76,13 +76,15 @@ public class SchedulerService {
 //            String title = i.getRequestName();
 //            fullCalendars.add(new SchedulerFullCalendar(start, end, title));
 //        }
-        List<Help> helpList = helpService.findByCompanyName(companyName);
+        List<Help> helpList = helpService.findByCompanyName2(companyName);
         for(Help i : helpList) {
             String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
             String end = i.getEndDate() + "T" + i.getEndTime()+ ":00";
             String title;
-            if(i.getHelperName() != null)
+            if(i.getHelperPid() != null) {
                 title = "수락: " + i.getHelperName();
+                System.out.println("aaaaaa");
+            }
             else
                 title = "요청: " + i.getRequestName();
             fullCalendars.add(new SchedulerFullCalendar(start, end, title));
