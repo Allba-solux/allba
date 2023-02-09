@@ -93,10 +93,12 @@ export default {
 }
 
 #bo header nav .gnb li a {
-  display: block;
-  font-size: 18px;
-  text-transform: uppercase;
-  position: relative;
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+    position: relative;
+    margin-top:-20%;
+
 }
 
 #clock {

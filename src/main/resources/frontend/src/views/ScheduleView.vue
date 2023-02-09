@@ -133,7 +133,7 @@ export default {
           ],
 
         headerToolbar: {
-          left: "prev,next today myCustomButton",
+          left: "prev,next today",
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
@@ -254,6 +254,7 @@ export default {
 </script>
 <style scoped>
 h3{
+  margin-top: -0.8%;
   font-size:16px;
     margin-left: 8%;
 }
@@ -287,6 +288,7 @@ h3{
   margin-bottom: 10%;
 }
 
+
 h2 {
   margin: 0;
   font-size: 16px;
@@ -307,7 +309,7 @@ b {
   display: flex;
   min-height: 100%;
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 .demo-app-sidebar {
   width: 300px;
@@ -322,13 +324,16 @@ b {
   flex-grow: 1;
   padding: 3em;
 }
+
 .fc {
   /* the calendar root */
   max-width: 1100px;
   margin: 0 auto;
 }
 
+
 .table{
+  font-size:16px;
   width:80%;
   margin-left:12%;
   /* margin-top: -4%; */
