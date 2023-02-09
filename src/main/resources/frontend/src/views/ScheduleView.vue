@@ -14,7 +14,7 @@
             <label class="input-group-text" for="inputGroupSelect02"
               >이름</label
             >
-               <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-model="userName"></input>
+               <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-model="requestName"></input>
             <label class="input-group-text" for="inputGroupSelect01"
               >날짜</label
             >
@@ -60,19 +60,19 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">name</th>
-              <th scope="col">start</th>
-              <th scope="col">end</th>
-              <th scope="col">btn</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Part</th>
+              <th scope="col">Time</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="user in users">
               <!-- <th scope="row">1</th> -->
-              <td>{{ user.userName }}</td>
-              <td>{{ user.startDate }} | {{ user.startTime }}</td>
-
-              <td>{{ user.endDate }} | {{ user.endTime }}</td>
+              <td>{{ user.requestName }}</td>
+              <td>{{ user.startDate }} </td>
+              <td> {{ user.part }}</td>
+              <td>{{ user.startTime }} - {{ user.endTime }}</td>
               <td></td>
               <td>
                 <button 
@@ -131,17 +131,13 @@ export default {
   },
   data: function () {
     return {
-      requestPid:this.$store.state.pid,
-      users: [],
-      start: '',
-      end: '',
-      title: '',
-      part:'',
+      requestName: '',
       startDate: '',
+      users: [],
+      part: '',
       startTime: '',
-      endDate: '',
-      endTime: '',
-      userName: '',
+      endTime:'',
+
       calendarOptions: {
         plugins: [
           dayGridPlugin,
@@ -172,19 +168,15 @@ export default {
       return this.$store.getters.isLogin;
     },
     
-
-
   },
       methods: {
 
     async submitForm() {
       axios
         .post("http://localhost:9090/scheduler/{companyCode}/help", {
-          requestPid: this.requestPid,
-          startDate: this.startDate,
-          endDate: this.endDate,
-          part: this.part,
-          userName: this.userName,
+        requestName:this.requestName,
+        startDate:this.startDate,
+        part:this.part,
         })
         .then((res) => {
           console.log(res);
@@ -196,7 +188,8 @@ export default {
     async getData() {
       var vm = this;
       axios
-        .get("http://localhost:9090/scheduler/{companyCode}/data")
+        // .get("http://localhost:9090/scheduler/{companyCode}/data")
+        .get("http://localhost:9090/scheduler/help/request/")
         .then(function (response) {
           console.log(response.data);
           vm.users = response.data;

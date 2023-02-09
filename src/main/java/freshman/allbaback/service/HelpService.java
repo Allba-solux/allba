@@ -52,7 +52,7 @@ public class HelpService {
         return helpRepository.findByCompanyName(companyName);
     }
 
-    public void allow(String id,HelpAllowRequestDto dto) {
+    public String allow(String id,HelpAllowRequestDto dto) {
         Help entity = helpRepository.findById(id).get();
 
         entity.setHelperPid(dto.getHelperPid());

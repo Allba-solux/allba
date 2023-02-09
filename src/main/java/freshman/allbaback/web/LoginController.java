@@ -45,8 +45,10 @@ public class LoginController {
         // 로그인 성공 처리
         HttpSession session = request.getSession();
         session.setAttribute(LoginSession.LOGIN_MEMBER, loginMember);
-
-        return String.valueOf(loginMember);
+        System.out.println(loginMember.getName());
+        session.setAttribute("name",loginMember.getName());
+        session.setAttribute("company",loginMember.getName());
+        return String.valueOf(session.getAttribute("name"));
 
     }
     
