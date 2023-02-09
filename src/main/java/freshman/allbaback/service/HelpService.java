@@ -4,6 +4,8 @@ import freshman.allbaback.domain.Help;
 import freshman.allbaback.repository.HelpRepository;
 import freshman.allbaback.web.dto.HelpAllowRequestDto;
 import freshman.allbaback.web.dto.HelpSaveRequestDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,16 +17,16 @@ import static com.mongodb.assertions.Assertions.assertTrue;
 
 
 @Service
+@RequiredArgsConstructor
 public class HelpService {
     private final HelpRepository helpRepository;
-    public HelpService(HelpRepository helpRepository) {
-        this.helpRepository = helpRepository;
-    }
+
+
     private Help settingTime(Help help) {
         if(assertTrue(help.getPart().equals("오픈"))){
             help.setStartTime("08:00");
             help.setEndTime("12:00");
-        } else if (assertTrue(help.getPart().equals("미들"))) {
+        }else if (assertTrue(help.getPart().equals("미들"))) {
             help.setStartTime("12:00");
             help.setEndTime("16:00");
         }else if (assertTrue(help.getPart().equals("마감"))) {
@@ -39,7 +41,8 @@ public class HelpService {
     //대타 요청
     public Help save(HelpSaveRequestDto requestDto) {
         Help help = settingTime(requestDto.toEntity());
-        help.setEndDate(help.getStartDate());
+        //help.setEndDate(help.getStartDate());
+        System.out.println(help);
         return helpRepository.save(help);
     }
 
@@ -51,7 +54,9 @@ public class HelpService {
     public List<Help> findByCompanyName(String companyName) {
         return helpRepository.findByCompanyName(companyName);
     }
-
+    public List<Help> findAll(){
+        return helpRepository.findAll();
+    };
     public String allow(String id,HelpAllowRequestDto dto) {
         Help entity = helpRepository.findById(id).get();
 

@@ -39,7 +39,7 @@ public class LoginController {
             return "false";
         }else if (bindingResult.hasErrors()) {
             String n = String.valueOf(bindingResult);
-            return "뭔지 모르게써"+n;
+            return "뭔지 모르겠다."+n;
         }
 
         // 로그인 성공 처리

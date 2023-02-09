@@ -16,22 +16,24 @@ import javax.persistence.Id;
 public class Members {
 
     @Id
+    private String id;
     private String pid;
     private String pwd;
     private String name;
 
     private String phone;
     private String email;
-    private String company_name;
+    private String companyName;
 
     @Builder
-    public Members(String pid,String pwd,String name,String phone,String email,String company_name){
+    public Members(String id,String pid,String pwd,String name,String phone,String email,String companyName){
+        this.id=id;
         this.pid=pid;
         this.pwd=pwd;
         this.name=name;
         this.phone=phone;
         this.email=email;
-        this.company_name=company_name;
+        this.companyName=companyName;
     }
 
 }
