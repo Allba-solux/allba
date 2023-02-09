@@ -76,6 +76,7 @@
                 <button 
                   type="button"
                   v-on:click="alertOK"
+                  @click="patchAllow(user.id)"
                   class="btn btn-success">
                   수락하기</button>
               </td>
@@ -198,6 +199,21 @@ export default {
         .then(function (response) {
           console.log(response.data);
           cal.calendarOptions.events = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+
+    async patchAllow(id) {
+      axios
+        .patch(`http://localhost:9090/scheduler/help/${id}/allow`,
+        {
+          helperPid:  "allbasang",
+          helperName: "알바생"
+        }) 
+        .then(function (response) {
+          console.log(response.data);
         })
         .catch(function (error) {
           console.log(error);
