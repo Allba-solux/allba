@@ -70,9 +70,11 @@
             <tr v-for="user in users">
               <!-- <th scope="row">1</th> -->
               <td>{{ user.requestName }}</td>
-              <td>{{ user.startDate }} </td>
-              <td> {{ user.part }}</td>
-              <td>{{ user.startTime }} - {{ user.endTime }}</td>
+
+              <td>{{ user.startDate }} | {{ user.startTime }}</td>
+
+              <td>{{ user.endDate }} | {{ user.endTime }}</td>
+
               <td></td>
               <td>
                 <button 
@@ -129,21 +131,24 @@ export default {
     FullCalendar, // make the <FullCalendar> tag available,
     ScheduleList,
   },
-  data: function () {
-    return {
-      requestName: '',
-      startDate: '',
-      users: [],
-      part: '',
-      startTime: '',
-      endTime:'',
 
-      calendarOptions: {
-        plugins: [
-          dayGridPlugin,
-          timeGridPlugin,
-          interactionPlugin, // needed for dateClick
-        ],
+    data: function () {
+      return {
+        id:'',
+        requestPid:'',
+        users:[],
+        requestName:'',
+        startDate: '',
+        startTime: '',
+        endTime: '',
+        part:'',
+        calendarOptions: {
+          plugins: [
+            dayGridPlugin,
+            timeGridPlugin,
+            interactionPlugin, // needed for dateClick
+          ],
+
         headerToolbar: {
           left: "prev,next today myCustomButton",
           center: "title",
@@ -169,41 +174,42 @@ export default {
     },
     
   },
-      methods: {
+       methods: {
+          async submitForm() {
+            axios
+              .post("http://localhost:9090/scheduler/help/request/", {
+                requestName:this.requestName,
+                startDate: this.startDate,
+                part: this.part,
+                startTime: this.startTime,
+                endTime: this.endTime
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+          async getData() {
+            var vm = this;
+            axios
+              .get("http://localhost:9090/scheduler/스타벅스숙대점/help/")
+              .then(function (response) {
+                console.log(response.data);
+                vm.users = response.data;
+                this.initForm();
 
-    async submitForm() {
-      axios
-        .post("http://localhost:9090/scheduler/{companyCode}/help", {
-        requestName:this.requestName,
-        startDate:this.startDate,
-        part:this.part,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    async getData() {
-      var vm = this;
-      axios
-        // .get("http://localhost:9090/scheduler/{companyCode}/data")
-        .get("http://localhost:9090/scheduler/help/request/")
-        .then(function (response) {
-          console.log(response.data);
-          vm.users = response.data;
-          this.initForm();
-       
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          },
+
     async getFull() {
       var cal = this;
       axios
-        .get("http://localhost:9090/scheduler/{companyCode}")
+        .get("http://localhost:9090/scheduler/스타벅스숙대점")
         .then(function (response) {
           console.log(response.data);
           cal.calendarOptions.events = response.data;

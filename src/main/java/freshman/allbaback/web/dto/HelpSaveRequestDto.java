@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class HelpSaveRequestDto {
+    private String id;
     private String requestPid;
     private String requestName;
     private String companyName;
@@ -22,6 +23,7 @@ public class HelpSaveRequestDto {
 
     @Builder
     public HelpSaveRequestDto(Help entity){
+        this.id=id;
         this.requestPid=requestPid;
         this.requestName=requestName;
         this.companyName=companyName;
@@ -34,7 +36,6 @@ public class HelpSaveRequestDto {
 
     public Help toEntity(){
         return Help.builder()
-                .requestPid(requestPid)
                 .requestName(requestName)
                 .companyName(companyName)
                 .startDate(startDate)

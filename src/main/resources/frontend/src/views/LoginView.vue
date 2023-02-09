@@ -24,7 +24,7 @@
             ><span class="regi"> 회원가입</span></router-link
           >
         </div>
-        {{ logMessage }}
+
       </form>
     </div>
   </div>
@@ -51,7 +51,8 @@ export default {
         .then((res) => {
           console.log(res);
           console.log(this.pid);
-          this.$store.commit('setPid', this.pid);
+
+          this.$store.commit("setPid", this.pid);
 
 
           alert(this.pid + "님 어서오세요");
