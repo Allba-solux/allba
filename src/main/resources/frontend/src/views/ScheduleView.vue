@@ -60,19 +60,21 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">name</th>
-              <th scope="col">start</th>
-              <th scope="col">end</th>
-              <th scope="col">btn</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Part</th>
+              <th scope="col">Time</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="user in users">
               <!-- <th scope="row">1</th> -->
               <td>{{ user.requestName }}</td>
+
               <td>{{ user.startDate }} | {{ user.startTime }}</td>
 
               <td>{{ user.endDate }} | {{ user.endTime }}</td>
+
               <td></td>
               <td>
                 <button 
@@ -130,6 +132,7 @@ export default {
     FullCalendar, // make the <FullCalendar> tag available,
     ScheduleList,
   },
+
     data: function () {
       return {
         id:'',
@@ -146,6 +149,7 @@ export default {
             timeGridPlugin,
             interactionPlugin, // needed for dateClick
           ],
+
         headerToolbar: {
           left: "prev,next today myCustomButton",
           center: "title",
@@ -170,8 +174,6 @@ export default {
       return this.$store.getters.isLogin;
     },
     
-
-
   },
        methods: {
           async submitForm() {
@@ -182,7 +184,6 @@ export default {
                 part: this.part,
                 startTime: this.startTime,
                 endTime: this.endTime
-
               })
               .then((res) => {
                 console.log(res);
@@ -207,6 +208,7 @@ export default {
                 console.log(error);
               });
           },
+
     async getFull() {
       var cal = this;
       axios
