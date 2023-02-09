@@ -6,45 +6,48 @@
     <hr class="line mb-5" />
     <div class="container">
       <div class="header">
-           <div class="input-group">
+        <div class="input-group">
           <form @submit.prevent="submitForm">
-            
             <div class="input-group">
-              
-            <label class="input-group-text" for="inputGroupSelect02"
-              >이름</label
-            >
-               <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-model="userName"></input>
-            <label class="input-group-text" for="inputGroupSelect01"
-              >날짜</label
-            >
-            <input
-              type="date"
-              class="form-select"
-              id="inputGroupSelect01"
-              v-model="startDate"
-            />
-      
-            <label class="input-group-text" for="inputGroupSelect02"
-              >타임</label
-            >
-            <select class="form-select" aria-label="Default select example" v-model="part">
-  <option value="오픈">오픈</option>
-  <option value="미들">미들</option>
-  <option value="마감">마감</option>
-</select>
-       
-  
-             
+              <label class="input-group-text" for="inputGroupSelect02"
+                >이름</label
+              >
+              <div
+                class="form-control"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              >
+                {{ $store.state.name }}님
+              </div>
+              <label class="input-group-text" for="inputGroupSelect01"
+                >날짜</label
+              >
+              <input
+                type="date"
+                class="form-select"
+                id="inputGroupSelect01"
+                v-model="startDate"
+              />
+
+              <label class="input-group-text" for="inputGroupSelect02"
+                >타임</label
+              >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                v-model="part"
+              >
+                <option value="오픈">오픈</option>
+                <option value="미들">미들</option>
+                <option value="마감">마감</option>
+              </select>
             </div>
             <div class="d-flex flex-row-reverse gap-2 mt-4">
               <button type="submit" class="btn btn-warning mt-1">
                 대타 요청하기
               </button>
             </div>
-            <div>
-            
-            </div>
+            <div></div>
           </form>
         </div>
       </div>
@@ -75,10 +78,7 @@
               <td>{{ user.endDate }} | {{ user.endTime }}</td>
               <td></td>
               <td>
-                <button 
-                  type="button" 
-                  class="btn btn-success">
-                  수락하기</button>
+                <button type="button" class="btn btn-success">수락하기</button>
               </td>
             </tr>
           </tbody>
@@ -131,17 +131,17 @@ export default {
   },
   data: function () {
     return {
-      requestPid:this.$store.state.pid,
+      requestPid: this.$store.state.pid,
       users: [],
-      start: '',
-      end: '',
-      title: '',
-      part:'',
-      startDate: '',
-      startTime: '',
-      endDate: '',
-      endTime: '',
-      userName: '',
+      start: "",
+      end: "",
+      title: "",
+      part: "",
+      startDate: "",
+      startTime: "",
+      endDate: "",
+      endTime: "",
+      userName: "",
       calendarOptions: {
         plugins: [
           dayGridPlugin,
@@ -171,15 +171,11 @@ export default {
     isUserLogin() {
       return this.$store.getters.isLogin;
     },
-    
-
-
   },
-      methods: {
-
+  methods: {
     async submitForm() {
       axios
-        .post("http://localhost:9090/scheduler/{companyCode}/help", {
+        .post("http://localhost:9090/scheduler/{company}/help", {
           requestPid: this.requestPid,
           startDate: this.startDate,
           endDate: this.endDate,
@@ -201,7 +197,6 @@ export default {
           console.log(response.data);
           vm.users = response.data;
           this.initForm();
-       
         })
         .catch(function (error) {
           console.log(error);
@@ -220,35 +215,37 @@ export default {
         });
     },
     handleWeekendsToggle() {
-      this.calendarOptions.weekends = !this.calendarOptions.weekends // update a property
+      this.calendarOptions.weekends = !this.calendarOptions.weekends; // update a property
     },
     handleDateSelect(selectInfo) {
-      let title = prompt('Please enter a new title for your event')
-      let calendarApi = selectInfo.view.calendar
-      calendarApi.unselect() // clear date selection
+      let title = prompt("Please enter a new title for your event");
+      let calendarApi = selectInfo.view.calendar;
+      calendarApi.unselect(); // clear date selection
       if (title) {
         calendarApi.addEvent({
           id: createEventId(),
           title,
           start: selectInfo.startStr,
           end: selectInfo.endStr,
-          allDay: selectInfo.allDay
-        })
+          allDay: selectInfo.allDay,
+        });
       }
     },
     handleEventClick(clickInfo) {
-      if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-        clickInfo.event.remove()
+      if (
+        confirm(
+          `Are you sure you want to delete the event '${clickInfo.event.title}'`
+        )
+      ) {
+        clickInfo.event.remove();
       }
     },
     handleEvents(events) {
-      this.currentEvents = events
+      this.currentEvents = events;
     },
-    initForm() {
-
-    },
-  }
-}
+    initForm() {},
+  },
+};
 </script>
 <style scoped>
 .title {
