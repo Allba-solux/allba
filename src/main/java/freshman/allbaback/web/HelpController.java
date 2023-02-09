@@ -41,8 +41,9 @@ public class HelpController {
 
     // 대타 수락
     @PatchMapping("scheduler/help/{id}/allow")
-    public void allow(@PathVariable String id, @RequestBody HelpAllowRequestDto dto) {
+    public String allow(@PathVariable String id, @RequestBody HelpAllowRequestDto dto) {
         helpService.allow(id, dto);
+        return "redirect:/";
     }
 
     //내가 도와준 리스트
