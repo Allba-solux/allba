@@ -5,6 +5,7 @@ import freshman.allbaback.service.HelpService;
 import freshman.allbaback.web.dto.HelpAllowRequestDto;
 import freshman.allbaback.web.dto.HelpSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,11 @@ public class HelpController {
     public List<Help> findByCompanyName(@PathVariable String companyName) {
         return helpService.findByCompanyName(companyName);
     }
+    @GetMapping("scheduler/help/list")
+    public List<Help> findAll() {
+        return helpService.findAll();
+    }
+
 
     //내가 요청한 리스트
     @GetMapping("scheduler/help/request/{requestPid}")
@@ -35,8 +41,9 @@ public class HelpController {
 
     // 대타 수락
     @PatchMapping("scheduler/help/{id}/allow")
-    public void allow(@PathVariable String id, @RequestBody HelpAllowRequestDto dto) {
+    public String allow(@PathVariable String id, @RequestBody HelpAllowRequestDto dto) {
         helpService.allow(id, dto);
+        return "redirect:/";
     }
 
     //내가 도와준 리스트

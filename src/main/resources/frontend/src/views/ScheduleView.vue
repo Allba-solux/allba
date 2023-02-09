@@ -2,47 +2,41 @@
   <div>
     <!-- 대타등록  -->
 
-    <h2 class="title">대타 등록하기</h2>
+    <h2 class="title">대타 요청</h2></br><h3><i class="fa-solid fa-house"></i> 지점명: 스타벅스 숙대점</h3>
     <hr class="line mb-5" />
     <div class="container">
       <div class="header">
         <div class="input-group">
           <form @submit.prevent="submitForm">
             <div class="input-group">
-              <label class="input-group-text" for="inputGroupSelect02"
-                >이름</label
-              >
-              <div
-                class="form-control"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-              >
-                {{ $store.state.name }}님
-              </div>
-              <label class="input-group-text" for="inputGroupSelect01"
-                >날짜</label
-              >
-              <input
-                type="date"
-                class="form-select"
-                id="inputGroupSelect01"
-                v-model="startDate"
-              />
-
-              <label class="input-group-text" for="inputGroupSelect02"
-                >타임</label
-              >
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                v-model="part"
-              >
-                <option value="오픈">오픈</option>
-                <option value="미들">미들</option>
-                <option value="마감">마감</option>
-              </select>
+              
+            <label class="input-group-text" for="inputGroupSelect02"
+              >이름</label
+            >
+               <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" v-model="requestName"></input>
+            <label class="input-group-text" for="inputGroupSelect01"
+              >날짜</label
+            >
+            <input
+              type="date"
+              class="form-select"
+              id="inputGroupSelect01"
+              v-model="startDate"
+            />
+      
+            <label class="input-group-text" for="inputGroupSelect02"
+              >타임</label
+            >
+            <select class="form-select" aria-label="Default select example" v-model="part">
+  <option value="오픈">오픈</option>
+  <option value="미들">미들</option>
+  <option value="마감">마감</option>
+</select>
+       
+  
+             
             </div>
-            <div class="d-flex flex-row-reverse gap-2 mt-4">
+            <div id="requestbtn" class="d-flex flex-row-reverse gap-2 mt-4 " >
               <button type="submit" class="btn btn-warning mt-1">
                 대타 요청하기
               </button>
@@ -63,22 +57,27 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">name</th>
-              <th scope="col">start</th>
-              <th scope="col">end</th>
-              <th scope="col">btn</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Part</th>
+              <th scope="col">Time</th>
+              <th scope="col">Btn</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="user in users">
               <!-- <th scope="row">1</th> -->
-              <td>{{ user.userName }}</td>
-              <td>{{ user.startDate }} | {{ user.startTime }}</td>
+              <th>{{ user.requestName }}</th>
 
-              <td>{{ user.endDate }} | {{ user.endTime }}</td>
-              <td></td>
+              <td>{{ user.startDate }} </td> <td>{{ user.part }}</td>
+
+              <td>{{ user.startTime }} ~ {{ user.endTime }} </td>
               <td>
-                <button type="button" class="btn btn-success">수락하기</button>
+                <button 
+                  type="button"
+                  v-on:click="alertOK"
+                  class="btn btn-success">
+                  수락하기</button>
               </td>
             </tr>
           </tbody>
@@ -98,21 +97,6 @@
       </div>
     </div>
 
-    <!-- <template v-else> -->
-    <div class="container">
-      <p class="text">아직 등록된 지점이 없습니다.</p>
-      <router-link to="/login"
-        ><button type="button" class="btn btn-danger">
-          로그인 하러가기
-        </button></router-link
-      >
-      <router-link to="/finding"
-        ><button type="button" class="btn btn-warning">
-          우리 지점 찾으러가기
-        </button></router-link
-      >
-    </div>
-    <!-- </template> -->
   </div>
 </template>
 
@@ -129,25 +113,24 @@ export default {
     FullCalendar, // make the <FullCalendar> tag available,
     ScheduleList,
   },
-  data: function () {
-    return {
-      requestPid: this.$store.state.pid,
-      users: [],
-      start: "",
-      end: "",
-      title: "",
-      part: "",
-      startDate: "",
-      startTime: "",
-      endDate: "",
-      endTime: "",
-      userName: "",
-      calendarOptions: {
-        plugins: [
-          dayGridPlugin,
-          timeGridPlugin,
-          interactionPlugin, // needed for dateClick
-        ],
+
+    data: function () {
+      return {
+        id:'',
+        requestPid:'',
+        users:[],
+        requestName:'',
+        startDate: '',
+        startTime: '',
+        endTime: '',
+        part:'',
+        calendarOptions: {
+          plugins: [
+            dayGridPlugin,
+            timeGridPlugin,
+            interactionPlugin, // needed for dateClick
+          ],
+
         headerToolbar: {
           left: "prev,next today myCustomButton",
           center: "title",
@@ -171,41 +154,47 @@ export default {
     isUserLogin() {
       return this.$store.getters.isLogin;
     },
+    
   },
-  methods: {
-    async submitForm() {
-      axios
-        .post("http://localhost:9090/scheduler/{company}/help", {
-          requestPid: this.requestPid,
-          startDate: this.startDate,
-          endDate: this.endDate,
-          part: this.part,
-          userName: this.userName,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    async getData() {
-      var vm = this;
-      axios
-        .get("http://localhost:9090/scheduler/{companyCode}/data")
-        .then(function (response) {
-          console.log(response.data);
-          vm.users = response.data;
-          this.initForm();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
+       methods: {
+          async submitForm() {
+            axios
+              .post("http://localhost:9090/scheduler/help/request/", {
+                requestName:this.requestName,
+                startDate: this.startDate,
+                part: this.part,
+                startTime: this.startTime,
+                endTime: this.endTime,
+                companyName:"스타벅스숙대점"
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+          alertOK: function (event) {
+            alert("대타 등록이 완료되었습니다.")},
+          async getData() {
+            var vm = this;
+            axios
+              .get("http://localhost:9090/scheduler/스타벅스숙대점/help/")
+              .then(function (response) {
+                console.log(response.data);
+                vm.users = response.data;
+                this.initForm();
+
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          },
+
     async getFull() {
       var cal = this;
       axios
-        .get("http://localhost:9090/scheduler/{companyCode}")
+        .get("http://localhost:9090/scheduler/스타벅스숙대점")
         .then(function (response) {
           console.log(response.data);
           cal.calendarOptions.events = response.data;
@@ -248,6 +237,20 @@ export default {
 };
 </script>
 <style scoped>
+h3{
+  font-size:16px;
+    margin-left: 8%;
+}
+
+#requestbtn{
+  margin-right:-16%;
+  margin-bottom: 10%;
+}
+.input-group{
+  margin-top: 1.5%;
+  margin-left: 16%;
+
+}
 .title {
   font-weight: 600;
   font-size: 32px;
@@ -307,5 +310,12 @@ b {
   /* the calendar root */
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.table{
+  width:80%;
+  margin-left:12%;
+  /* margin-top: -4%; */
+  text-align: center;
 }
 </style>

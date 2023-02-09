@@ -24,7 +24,6 @@
             ><span class="regi"> 회원가입</span></router-link
           >
         </div>
-        {{ logMessage }}
       </form>
     </div>
   </div>
