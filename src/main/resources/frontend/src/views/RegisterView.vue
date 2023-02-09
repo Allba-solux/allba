@@ -10,7 +10,7 @@
         <label for="floatingInput">지점 이름</label> 
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" v-model="companyPW">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="companyPW">
         <label for="floatingPassword">비밀번호 설정</label>
     </div>
 
@@ -50,8 +50,9 @@ export default {
             })
             .then(res => {
                 console.log(res);
+                alert('지점 등록이 완료되었습니다.')
                 this.$router.push('/finding');
-        
+
             }).catch(err => {
                     console.log(err);
             })
@@ -60,7 +61,7 @@ export default {
             //     companyCode: this.companyCode,
             //     companyName: this.companyName,
             //     companyPW: this.companyPW,
-            //     companyDescription:this.companyDescription,      
+            //     companyDescription:this.companyDescription,
             // });
             // console.log(response);
             // }
@@ -83,7 +84,7 @@ export default {
 }
 </style>
 
-    
+
 }
 </script>
 <style scoped>
@@ -97,5 +98,5 @@ export default {
 .line{
     width:90%;
     margin-left:5%
-} 
+}
 </style>

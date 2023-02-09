@@ -210,8 +210,8 @@ export default {
         .patch(`http://localhost:9090/scheduler/help/${id}/allow`,
         {
           helperPid:  "allbasang",
-          helperName: "알바생"
-        }) 
+          helperName: "김눈송알바"
+        })
         .then(function (response) {
           console.log(response.data);
         })
