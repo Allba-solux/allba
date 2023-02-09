@@ -2,7 +2,7 @@
   <div>
     <!-- 대타등록  -->
 
-    <h2 class="title">대타 등록하기</h2>
+    <h2 class="title">대타 요청</h2></br><h3 class="input-group-text"> 지점명: 스타벅스 숙대점</h3>
     <hr class="line mb-5" />
     <div class="container">
       <div class="header">
@@ -78,7 +78,8 @@
               <td></td>
               <td>
                 <button 
-                  type="button" 
+                  type="button"
+                  v-on:click="alertOK"
                   class="btn btn-success">
                   수락하기</button>
               </td>
@@ -182,7 +183,8 @@ export default {
                 startDate: this.startDate,
                 part: this.part,
                 startTime: this.startTime,
-                endTime: this.endTime
+                endTime: this.endTime,
+                companyName:"스타벅스숙대점"
               })
               .then((res) => {
                 console.log(res);
@@ -191,6 +193,8 @@ export default {
                 console.log(err);
               });
           },
+          alertOK: function (event) {
+            alert("대타 등록이 완료되었습니다.")},
           async getData() {
             var vm = this;
             axios
