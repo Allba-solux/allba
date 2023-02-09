@@ -1,6 +1,7 @@
 package freshman.allbaback.controller;
 
 import freshman.allbaback.domain.Company;
+import freshman.allbaback.domain.Help;
 import freshman.allbaback.domain.Scheduler;
 import freshman.allbaback.domain.SchedulerFullCalendar;
 import freshman.allbaback.domain.members.Members;
@@ -18,7 +19,7 @@ public class SchedulerController {
     private final SchedulerService schedulerService;
 
     @PostMapping("/{companyName}/new")
-    public String createNewSchedule(@PathVariable String companyName, @RequestBody Scheduler scheduler) {
+    public String createNewSchedule(@PathVariable String companyName, @RequestBody Help scheduler) {
         scheduler.setCompanyName(companyName);
         schedulerService.addSchedule(scheduler);
         return "newSchedule";
@@ -39,12 +40,12 @@ public class SchedulerController {
 //        return schedulerService.findDatas(companyCode);
 //    }
 
-    @PostMapping("/{companyName}/help")
-    public void allbaPlease(@PathVariable String companyName, @RequestBody Scheduler scheduler) {
-        scheduler.setCompanyName(companyName);
-        scheduler.setHelp(Boolean.TRUE);
-        schedulerService.addSchedule(scheduler);
-    }
+//    @PostMapping("/{companyName}/help")
+//    public void allbaPlease(@PathVariable String companyName, @RequestBody Help scheduler) {
+//        scheduler.setCompanyName(companyName);
+//        scheduler.setHelp(Boolean.TRUE);
+//        schedulerService.addSchedule(scheduler);
+//    }
 
 //    @PutMapping("/{companyCode}/{scheduler_id}/DATAaccept")
 //    public void allbaOK(@PathVariable String companyCode, @PathVariable String scheduler_id) {
