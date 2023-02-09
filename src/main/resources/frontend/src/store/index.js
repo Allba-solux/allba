@@ -6,9 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    pid: '',
-    name: '',
-
+    pid: "",
+    name: "",
   },
   getters: {
     isLogin(state) {
@@ -23,11 +22,7 @@ export default new Vuex.Store({
       state.name = name;
     },
     clearPid(state) {
-      state.pid = '';
-
-    },
-    clearPid(state) {
-      state.pid = '';
+      state.pid = "";
     },
   },
   // actions: {
