@@ -6,9 +6,8 @@
     <hr class="line mb-5" />
     <div class="container">
       <div class="header">
-           <div class="input-group">
+        <div class="input-group">
           <form @submit.prevent="submitForm">
-            
             <div class="input-group">
               
             <label class="input-group-text" for="inputGroupSelect02"
@@ -42,9 +41,7 @@
                 대타 요청하기
               </button>
             </div>
-            <div>
-            
-            </div>
+            <div></div>
           </form>
         </div>
       </div>
@@ -207,35 +204,37 @@ export default {
         });
     },
     handleWeekendsToggle() {
-      this.calendarOptions.weekends = !this.calendarOptions.weekends // update a property
+      this.calendarOptions.weekends = !this.calendarOptions.weekends; // update a property
     },
     handleDateSelect(selectInfo) {
-      let title = prompt('Please enter a new title for your event')
-      let calendarApi = selectInfo.view.calendar
-      calendarApi.unselect() // clear date selection
+      let title = prompt("Please enter a new title for your event");
+      let calendarApi = selectInfo.view.calendar;
+      calendarApi.unselect(); // clear date selection
       if (title) {
         calendarApi.addEvent({
           id: createEventId(),
           title,
           start: selectInfo.startStr,
           end: selectInfo.endStr,
-          allDay: selectInfo.allDay
-        })
+          allDay: selectInfo.allDay,
+        });
       }
     },
     handleEventClick(clickInfo) {
-      if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-        clickInfo.event.remove()
+      if (
+        confirm(
+          `Are you sure you want to delete the event '${clickInfo.event.title}'`
+        )
+      ) {
+        clickInfo.event.remove();
       }
     },
     handleEvents(events) {
-      this.currentEvents = events
+      this.currentEvents = events;
     },
-    initForm() {
-
-    },
-  }
-}
+    initForm() {},
+  },
+};
 </script>
 <style scoped>
 h3{

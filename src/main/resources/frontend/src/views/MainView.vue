@@ -8,7 +8,7 @@
            <footer>
            <h2 class="footerLogo">Allba<i class="fa-solid fa-clock-rotate-left"></i></h2>
            <ul>
-               <li>FORNT-END 김지은 유영서 | BACK-END 이가은 장혜지 한수정 </li>
+               <li>FORNT-END 김지은 유영서 | BACK-END 이가은 한수정 </li>
                <li>soluxallba@gmail.com</li>
                <li><span class="copyright">COPYRIGHT 2023</span></li>  
            </ul>

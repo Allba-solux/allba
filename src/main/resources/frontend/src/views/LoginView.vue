@@ -24,7 +24,6 @@
             ><span class="regi"> 회원가입</span></router-link
           >
         </div>
-
       </form>
     </div>
   </div>
@@ -39,6 +38,7 @@ export default {
       //form values
       pid: "",
       pwd: "",
+      name: "",
     };
   },
   methods: {
@@ -53,7 +53,6 @@ export default {
           console.log(this.pid);
 
           this.$store.commit("setPid", this.pid);
-
 
           alert(this.pid + "님 어서오세요");
           this.initForm();
