@@ -68,14 +68,14 @@ public class SchedulerService {
 
     // 스케줄 조회
     public List<SchedulerFullCalendar> findSchedulers(String companyName) {
-        List<Help> V_Calendars = schedulerRepository.findByCompanyName(companyName);
+//        List<Help> V_Calendars = schedulerRepository.findByCompanyName(companyName);
         List<SchedulerFullCalendar> fullCalendars = new ArrayList<SchedulerFullCalendar>();
-        for(Help i : V_Calendars) {
-            String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
-            String end = i.getEndDate() + "T" + i.getEndTime()+ ":00";
-            String title = i.getRequestName();
-            fullCalendars.add(new SchedulerFullCalendar(start, end, title));
-        }
+//        for(Help i : V_Calendars) {
+//            String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
+//            String end = i.getEndDate() + "T" + i.getEndTime()+ ":00";
+//            String title = i.getRequestName();
+//            fullCalendars.add(new SchedulerFullCalendar(start, end, title));
+//        }
         List<Help> helpList = helpService.findByCompanyName(companyName);
         for(Help i : helpList) {
             String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
