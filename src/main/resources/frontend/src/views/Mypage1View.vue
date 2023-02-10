@@ -5,7 +5,7 @@
       <h2 class="title">MyPage</h2>
       <hr class="line" />
       <i class="fa-solid fa-user"></i
-      ><span class="user">{{ $store.state.name }}님</span>
+      ><span class="user">{{ $store.state.pid }}님</span>
     </div>
 
     <table class="table caption-top">
@@ -15,34 +15,36 @@
       <thead>
         <tr>
           <th scope="col">지점명</th>
-          <th scope="col">2월 근무 시간</th>
+          <th scope="col">이번 달 근무 시간</th>
           <th scope="col">총 급여</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>메가커피 눈송점</td>
-          <td>48</td>
-          <td>300000</td>
+          <td>스타벅스 숙대점</td>
+          <td>36 시간</td>
+          <td>396,000 원</td>
         </tr>
       </tbody>
     </table>
 
     <table class="table caption-top">
       <caption>
-        나의 도와준 사람
+        나를 도와준 사람
       </caption>
       <thead>
         <tr>
           <th scope="col">이름</th>
-          <th scope="col">시간</th>
+          <th scope="col">일자</th>
+          <th scope="col">(-) 시간</th>
           <th scope="col">횟수</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>김순헌</td>
-          <td>20:00 ~ 23:00</td>
+          <td>정숙명 님</td>
+          <td>2023-02-04</td>
+          <td>08:00 ~ 12:00</td>
           <td>1회</td>
         </tr>
       </tbody>
@@ -55,14 +57,22 @@
       <thead>
         <tr>
           <th scope="col">이름</th>
-          <th scope="col">시간</th>
+          <th scope="col">일자</th>
+          <th scope="col">(+) 시간</th>
           <th scope="col">횟수</th>
         </tr>
       </thead>
       <tbody>
+      <tr>
+                <td>진시황 님</td>
+                <td>2023-02-09</td>
+                <td>08:00 ~ 12:00</td>
+                <td>1회</td>
+              </tr>
         <tr>
-          <td>유숙명님</td>
-          <td>20:00 ~ 23:00</td>
+          <td>김돌돌 님</td>
+          <td>2023-02-17</td>
+          <td>16:00 ~ 20:00</td>
           <td>1회</td>
         </tr>
       </tbody>

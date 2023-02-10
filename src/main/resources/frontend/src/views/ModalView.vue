@@ -21,9 +21,10 @@ function radioChange(event) {
         </div>
 
         <div class="modal-body">
-          <!-- <slot name="body">정보를 입력해주세요 </slot>-->
-        </div> 
-     
+
+          <slot name="body">패스워드 입력<input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="companyPW"> </slot>
+        </div>
+
 
         <div class="modal-input">
           <!--<slot name="text">시급 입력 : </slot>-->
@@ -69,17 +70,17 @@ function radioChange(event) {
   <option value="마감">마감</option>
 </select>
 </div>
-      
-       
+
+
             </div>
 
-      
+
 
         <div class="modal-footer">
           <slot name="footer">
             <button class="btn btn-light mt-2" @click="$emit('close')">완료</button>
           </slot>
-          
+
         </div>
       </div>
     </div>
@@ -141,10 +142,20 @@ input[type="password"] {
 .modal-enter-from {
   opacity: 0;
 }
+.modal-leave-active {
+  transition: opacity 0.3s ease 0.2s;
+}
 
+.modal-enter,
 .modal-leave-to {
   opacity: 0;
+
+ .modal-window {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }
+
 
 .modal-enter-from .modal-container,
 .modal-leave-to .modal-container {

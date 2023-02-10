@@ -58,6 +58,8 @@ public class SchedulerService {
     @Autowired
     private HelpRepository schedulerRepository;
     @Autowired
+    private SchedulerRepository sc;
+    @Autowired
     private HelpService helpService;
 
     // 스케줄 등록
@@ -65,17 +67,21 @@ public class SchedulerService {
         scheduler.setEndDate(scheduler.getStartDate());
         schedulerRepository.insert(scheduler);
     }
+    public void initSchedule(Scheduler scheduler) {
+        scheduler.setEndDate(scheduler.getStartDate());
+        sc.insert(scheduler);
+    }
 
     // 스케줄 조회
     public List<SchedulerFullCalendar> findSchedulers(String companyName) {
-//        List<Help> V_Calendars = schedulerRepository.findByCompanyName(companyName);
+        List<Scheduler> V_Calendars = sc.findByCompanyName(companyName);
         List<SchedulerFullCalendar> fullCalendars = new ArrayList<SchedulerFullCalendar>();
-//        for(Help i : V_Calendars) {
-//            String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
-//            String end = i.getEndDate() + "T" + i.getEndTime()+ ":00";
-//            String title = i.getRequestName();
-//            fullCalendars.add(new SchedulerFullCalendar(start, end, title));
-//        }
+        for(Scheduler i : V_Calendars) {
+            String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
+            String end = i.getEndDate() + "T" + i.getEndTime()+ ":00";
+            String title = i.getUserName();
+            fullCalendars.add(new SchedulerFullCalendar(start, end, title));
+        }
         List<Help> helpList = helpService.findByCompanyName2(companyName);
         for(Help i : helpList) {
             String start = i.getStartDate() + "T" + i.getStartTime() + ":00";
