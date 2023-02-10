@@ -14,7 +14,7 @@
         <div>
             <h3 class="join_title"><label for="pswd1">PW</label></h3>
             <span class="box int_pass">
-                <input type="text" id="pswd1" class="int" maxlength="20" v-model="pwd">
+                <input type="password" id="pswd1" class="int" maxlength="20" v-model="pwd">
            </span>
         </div>
 
@@ -127,6 +127,13 @@ export default {
 // };
 </script>
 <style scoped>
+
+@import url("//fonts.googleapis.com/earlyaccess/nanumgothic.css");
+input[type="password"] {
+  font-family: "Nanum Gothic", sans-serif !important;
+}
+
+
 .line{
     margin-bottom:5%;
 
