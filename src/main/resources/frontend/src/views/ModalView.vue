@@ -21,15 +21,28 @@ function radioChange(event) {
         </div>
 
         <div class="modal-body">
+
           <slot name="body">패스워드 입력<input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="companyPW"> </slot>
         </div>
 
 
         <div class="modal-input">
           <!--<slot name="text">시급 입력 : </slot>-->
+                               <div class="input-group m-1">
+                          <label class="input-group-text" for="inputGroupSelect02"
+              >비밀번호</label
+            >
+          <input
+            type="password"
+            class="form-control"
+          />
+          </div>
+
+
+
                      <div class="input-group m-1">
                           <label class="input-group-text" for="inputGroupSelect02"
-              >시급</label
+              >  시급  </label
             >
           <input
             type="text"
@@ -75,6 +88,12 @@ function radioChange(event) {
 </template>
 
 <style>
+@import url("//fonts.googleapis.com/earlyaccess/nanumgothic.css");
+input[type="password"] {
+  font-family: "Nanum Gothic", sans-serif !important;
+}
+
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
