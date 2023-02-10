@@ -21,25 +21,24 @@ function radioChange(event) {
         </div>
 
         <div class="modal-body">
-
-          <slot name="body">패스워드 입력<input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="companyPW"> </slot>
         </div>
 
 
         <div class="modal-input">
           <!--<slot name="text">시급 입력 : </slot>-->
-                               <div class="input-group m-1">
+
+                    <div class="input-group m-1">
                           <label class="input-group-text" for="inputGroupSelect02"
               >비밀번호</label
             >
           <input
             type="password"
             class="form-control"
+
+            v-model="companyPW""
+
           />
           </div>
-
-
-
                      <div class="input-group m-1">
                           <label class="input-group-text" for="inputGroupSelect02"
               >  시급  </label
@@ -78,7 +77,8 @@ function radioChange(event) {
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="btn btn-light mt-2" @click="$emit('close')">완료</button>
+            <button class="btn btn-outline-danger m-1 mt-2 " @click="$emit('close')">OUT</button>
+            <button class="btn btn-outline-success m-1 mt-2" @click="$emit('close')">OK</button>
           </slot>
 
         </div>
